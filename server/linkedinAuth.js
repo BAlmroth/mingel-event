@@ -10,7 +10,7 @@ router.get("/login", (req, res) => {
     response_type: "code",
     client_id: process.env.LINKEDIN_CLIENT_ID,
     redirect_uri: process.env.LINKEDIN_REDIRECT_URI,
-    scope: "r_liteprofile r_emailaddress",
+    scope: "openid profile email",
     state: "123456",
   });
 
@@ -41,14 +41,18 @@ router.get("/callback", async (req, res) => {
     const accessToken = tokenResponse.data.access_token;
 
     const profileResponse = await axios.get(
-      "https://api.linkedin.com/v2/me",
-      { headers: { Authorization: `Bearer ${accessToken}` } }
+      "https://api.linkedin.com/v2/userinfo",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     );
 
     const profileData = profileResponse.data;
 
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${process.env.FRONTEND_URL}/create-profile?firstName=${profileData.localizedFirstName}&lastName=${profileData.localizedLastName}`;
+    const frontendRedirect = `${process.env.FRONTEND_URL}/create-profile?firstName=${profileData.given_name}&lastName=${profileData.family_name}`;
     res.redirect(frontendRedirect);
 
   } catch (err) {
