@@ -11,10 +11,14 @@ export function CreateProfile() {
     e.preventDefault(); //hoppa inte till en ny sida
   };
 
+  //linkedin
+  const handleLinkedInLogin = () => {
+    window.location.href = "http://localhost:4000/auth/linkedin/login";
+  };
+
   return (
     <section>
-        
-        <PageHeader/>
+      <PageHeader />
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         <label htmlFor="name">Full name</label>
@@ -25,11 +29,14 @@ export function CreateProfile() {
           id="company"
           name={isStudent ? "program" : "company"}
           type="text"
-          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
+          placeholder={
+            isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
+          }
         />
 
-        <label htmlFor="linkedin">LinkedIn</label>
-        <input id="linkedin" name="linkedin" type="url" />
+        {/* <label htmlFor="linkedin">LinkedIn</label>
+        <input id="linkedin" name="linkedin" type="url" /> */}
+        <button onClick={handleLinkedInLogin}>Log in with LinkedIn</button>
 
         <button type="submit">Start the stalking</button>
       </form>

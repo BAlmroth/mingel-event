@@ -1,15 +1,18 @@
 import express from 'express';
-import cors from 'cors';
+import cors from "cors";
+import linkedinAuth from "./linkedinAuth.js";
 
 const app = express();
 const PORT = 4000;
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({ message: 'Hello from the backend!' });
 });
+
+app.use("/auth/linkedin", linkedinAuth);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
