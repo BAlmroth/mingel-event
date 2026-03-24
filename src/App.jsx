@@ -1,16 +1,14 @@
 import { ChooseRole } from "./components/ProfileStartup/ChooseRole";
-import {  CreateProfile } from "./components/ProfileStartup/CreateProfile";
+import { CreateProfile } from "./components/ProfileStartup/CreateProfile";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <section>
-        <ChooseRole/>
-      </section>
-
-      <section>
-        <CreateProfile/>
-      </section>
+      <Routes>
+        <Route path="/" element={<ChooseRole />} />
+        <Route path="/create-profile" element={<CreateProfile />} />
+      </Routes>
     </>
   );
 }
