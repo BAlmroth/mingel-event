@@ -35,7 +35,7 @@ router.get("/callback", async (req, res) => {
         client_id: process.env.LINKEDIN_CLIENT_ID,
         client_secret: process.env.LINKEDIN_CLIENT_SECRET,
       }),
-      { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
+      { headers: { "Content-Type": "application/x-www-form-urlencoded" } },
     );
 
     const accessToken = tokenResponse.data.access_token;
@@ -46,15 +46,16 @@ router.get("/callback", async (req, res) => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
-      }
+      },
     );
 
     const profileData = profileResponse.data;
+    const frontendUrl = process.env.FRONTEND_URL.replace(/\/$/, "");
 
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${process.env.FRONTEND_URL}/create-profile?firstName=${profileData.given_name}&lastName=${profileData.family_name}`;
+    const frontendRedirect = `${frontendUrl}/create-profile?firstName=${profileData.given_name}&lastName=${profileData.family_name}`;
     res.redirect(frontendRedirect);
-
+    res.redirect(frontendRedirect);
   } catch (err) {
     console.error(err);
     res.status(500).send("LinkedIn login failed");
