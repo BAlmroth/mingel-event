@@ -4,6 +4,24 @@ import qs from "qs";
 
 const router = express.Router();
 
+// 👇 NY ROUTE (DETTA SAKNAS)
+router.get("/login", (req, res) => {
+  const params = qs.stringify({
+    response_type: "code",
+    client_id: process.env.LINKEDIN_CLIENT_ID,
+    redirect_uri: process.env.LINKEDIN_REDIRECT_URI,
+    scope: "r_liteprofile r_emailaddress",
+    state: "123456",
+  });
+
+  const url = `https://www.linkedin.com/oauth/v2/authorization?${params}`;
+
+  console.log("LINKEDIN URL:");
+  console.log(url);
+
+  res.redirect(url);
+});
+
 router.get("/callback", async (req, res) => {
   const code = req.query.code;
 
