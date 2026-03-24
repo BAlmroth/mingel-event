@@ -16,20 +16,20 @@ export function CreateProfile() {
         <h4>Register to</h4>
         <h1>Create Profile</h1>
       </div>
-
       <div>
         <p>Selected role: {role}</p>
       </div>
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         <label htmlFor="name">Name</label>
-        <input id="name" name="name" type="text" />
+        <input id="name" name="name" type="text" placeholder="Your name" />
 
         <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
         <input
           id="company"
           name={isStudent ? "program" : "company"}
           type="text"
+          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
         />
 
         <label htmlFor="linkedin">LinkedIn</label>
