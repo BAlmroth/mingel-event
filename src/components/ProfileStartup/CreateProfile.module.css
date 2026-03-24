@@ -21,7 +21,8 @@ h1 {
 input {
     padding: 1rem 0;
     border-radius: 1rem;
-
+    border: 2px solid #D9DDE6; 
+    background-color: #F0F1F5;
 }
 
 button {
