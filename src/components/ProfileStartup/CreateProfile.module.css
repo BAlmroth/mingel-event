@@ -1,0 +1,19 @@
+
+/* dublett med chooserole.module .roleinfo (fixa längre fram så man inte behöver upprepa) */
+.inputInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.profileInfo{
+    text-align: left;
+    margin-top: 5rem;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-right: 7rem;
+    line-height: 1;
+    padding-bottom: 3rem;
+}
