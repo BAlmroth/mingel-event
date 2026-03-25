@@ -11,7 +11,7 @@ export function PageHeader() {
       <h1>Stalk the people at the event</h1>
 
       {isFirst ? (
-        <p>I AM A...</p>
+        <p className={styles.headerp}>I AM A...</p>
       ) : (
         <Link to="/" className={styles.backButton}>
           <img src={BackArrow} alt="back arrow" />

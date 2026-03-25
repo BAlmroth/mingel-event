@@ -8,5 +8,18 @@ h1 {
     font-weight: 700;
     margin-right: 7rem;
     line-height: 1;
-    padding-bottom: 3rem;
+}
+
+.backButton {
+    color: #60687A;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.headerp {
+    margin: 3rem 0 0.3rem;
 }

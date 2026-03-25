@@ -4,7 +4,9 @@ import qs from "qs";
 
 const router = express.Router();
 
-// 👇 NY ROUTE (DETTA SAKNAS)
+//temporär substitution till databas
+const users = [];
+
 router.get("/login", (req, res) => {
   const params = qs.stringify({
     response_type: "code",
@@ -49,11 +51,24 @@ router.get("/callback", async (req, res) => {
       },
     );
 
+    // samla data för profilen ifrån linkedin
     const profileData = profileResponse.data;
+    console.log("PROFILE DATA:", profileData);
+
+    const user = {
+      firstName: profileData.given_name,
+      lastName: profileData.family_name,
+      picture: profileData.picture,
+    };
+
+    users.push(user);
+    console.log("saved user", user);
+
     const frontendUrl = process.env.FRONTEND_URL.replace(/\/$/, "");
 
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${frontendUrl}/create-profile?firstName=${profileData.given_name}&lastName=${profileData.family_name}`;
+    const frontendRedirect = `${frontendUrl}/create-profile?firstName=${user.firstName}&lastName=${user.lastName}&picture=${encodeURIComponent(user.picture)}`;
+
     res.redirect(frontendRedirect);
     res.redirect(frontendRedirect);
   } catch (err) {
