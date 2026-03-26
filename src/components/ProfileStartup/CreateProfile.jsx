@@ -6,7 +6,7 @@ import { PageHeader } from "./StartupHeader";
 export function CreateProfile() {
   const [searchParams] = useSearchParams();
 
-  const role = searchParams.get("role");
+  const role = localStorage.getItem("role");
   const isStudent = role === "student";
 
   const [image, setImage] = useState("");
@@ -45,20 +45,23 @@ export function CreateProfile() {
         <img
           src={image}
           alt="Profile picture"
-          style={{ width: "80px", borderRadius: "50%" }}
+          style={{ width: "150px", borderRadius: "50%" }}
         />
       )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
-        <label htmlFor="name">Full name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Your name"
-          value={name} // 👈 autofill here
-          onChange={(e) => setName(e.target.value)}
-        />
+          {!name && (
+          <button type="button" onClick={handleLinkedInLogin}>
+            Log in with LinkedIn
+          </button>
+          )}
+          
+        {name && (
+          <div className={Styles.greeting}>
+            <label>Welcome,</label>
+            <p>{name}</p>
+          </div>
+        )}
 
         <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
         <input
@@ -69,11 +72,6 @@ export function CreateProfile() {
             isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
           }
         />
-
-        <button type="button" onClick={handleLinkedInLogin}>
-          Log in with LinkedIn
-        </button>
-
         <button type="submit">Start the stalking</button>
       </form>
     </section>
