@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
 
+
 export function CreateProfile() {
   const [searchParams] = useSearchParams();
 
@@ -38,6 +39,7 @@ export function CreateProfile() {
   };
 
   return (
+    <>
     <section>
       <PageHeader />
 
@@ -45,17 +47,16 @@ export function CreateProfile() {
         <img
           src={image}
           alt="Profile picture"
-          style={{ width: "150px", borderRadius: "50%" }}
-        />
+          style={{ width: "150px", borderRadius: "50%" }} />
       )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
-          {!name && (
+        {!name && (
           <button type="button" onClick={handleLinkedInLogin}>
             Log in with LinkedIn
           </button>
-          )}
-          
+        )}
+
         {name && (
           <div className={Styles.greeting}>
             <label>Welcome,</label>
@@ -68,12 +69,10 @@ export function CreateProfile() {
           id="company"
           name={isStudent ? "program" : "company"}
           type="text"
-          placeholder={
-            isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
-          }
-        />
+          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"} />
         <button type="submit">Start the stalking</button>
       </form>
     </section>
+    </>
   );
 }
