@@ -2,8 +2,20 @@
 /* dublett med chooserole.module .roleinfo (fixa längre fram så man inte behöver upprepa) */
 .inputInfo {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
+    margin: 1rem;
+    line-height: 1.5;
 }
+
+.greeting {
+    text-align: center;
+    font-size: 2rem;   
+}
+
+.greeting p {
+    font-size: 1.5rem;
+}
+
 
 .profileInfo{
     text-align: left;

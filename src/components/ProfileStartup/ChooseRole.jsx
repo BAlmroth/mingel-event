@@ -10,11 +10,28 @@ export function ChooseRole() {
   return (
     <>
       <section>
-              <PageHeader/>
+        <PageHeader />
 
-        <RoleCard src={StudentImg} alt="student logo" title="Student" description="I'm here to learn and connect" onClick={() => navigate("/create-profile?role=student")} />
-        <RoleCard src={IndustryImg} alt="industry logo" title="Industry" description="I'm here to meet talent" 
-        onClick={() => navigate("/create-profile?role=industry")}/>
+        <RoleCard
+          src={StudentImg}
+          alt="student logo"
+          title="Student"
+          description="I'm here to learn and connect"
+          onClick={() => {
+            localStorage.setItem("role", "student");
+            navigate("/create-profile");
+          }}
+        />
+        <RoleCard
+          src={IndustryImg}
+          alt="industry logo"
+          title="Industry"
+          description="I'm here to meet talent"
+          onClick={() => {
+            localStorage.setItem("role", "industry");
+            navigate("/create-profile");
+          }}
+        />
       </section>
     </>
   );

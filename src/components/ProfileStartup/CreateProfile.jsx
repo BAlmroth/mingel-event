@@ -6,7 +6,7 @@ import { PageHeader } from "./StartupHeader";
 export function CreateProfile() {
   const [searchParams] = useSearchParams();
 
-  const role = searchParams.get("role");
+  const role = localStorage.getItem("role");
   const isStudent = role === "student";
 
   const [image, setImage] = useState("");
@@ -16,12 +16,12 @@ export function CreateProfile() {
 
   // 👉 NEW: read LinkedIn data from URL
   useEffect(() => {
-    const firstName = searchParams.get("firstName");
-    const lastName = searchParams.get("lastName");
+    const first_name = searchParams.get("first_name");
+    const last_name = searchParams.get("last_name");
     const picture = searchParams.get("picture");
 
-    if (firstName && lastName) {
-      setName(`${firstName} ${lastName}`);
+    if (first_name && last_name) {
+      setName(`${first_name} ${last_name}`);
     }
     if (picture) {
       setImage(picture);
@@ -45,20 +45,23 @@ export function CreateProfile() {
         <img
           src={image}
           alt="Profile picture"
-          style={{ width: "80px", borderRadius: "50%" }}
+          style={{ width: "150px", borderRadius: "50%" }}
         />
       )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
-        <label htmlFor="name">Full name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Your name"
-          value={name} // 👈 autofill here
-          onChange={(e) => setName(e.target.value)}
-        />
+          {!name && (
+          <button type="button" onClick={handleLinkedInLogin}>
+            Log in with LinkedIn
+          </button>
+          )}
+          
+        {name && (
+          <div className={Styles.greeting}>
+            <label>Welcome,</label>
+            <p>{name}</p>
+          </div>
+        )}
 
         <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
         <input
@@ -69,11 +72,6 @@ export function CreateProfile() {
             isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
           }
         />
-
-        <button type="button" onClick={handleLinkedInLogin}>
-          Log in with LinkedIn
-        </button>
-
         <button type="submit">Start the stalking</button>
       </form>
     </section>

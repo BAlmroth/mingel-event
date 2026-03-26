@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import qs from "qs";
+import supabase from "./supabaseClient.js";
 
 const router = express.Router();
 
@@ -56,20 +57,33 @@ router.get("/callback", async (req, res) => {
     console.log("PROFILE DATA:", profileData);
 
     const user = {
-      firstName: profileData.given_name,
-      lastName: profileData.family_name,
+      linkedin_id: profileData.sub,
+      first_name: profileData.given_name,
+      last_name: profileData.family_name,
       picture: profileData.picture,
     };
 
-    users.push(user);
-    console.log("saved user", user);
+    const { data, error } = await supabase
+  .from("users")
+  .upsert([user], { onConflict: "linkedin_id" });
+
+    if (error) {
+      console.error("Supabase error:", error);
+    } else {
+      console.log("Saved user:", data);
+    }
+
+    console.log("URL:", process.env.SUPABASE_URL);
+    console.log("KEY:", process.env.SUPABASE_KEY);
+
+    // users.push(user);
+    // console.log("saved user", user);
 
     const frontendUrl = process.env.FRONTEND_URL.replace(/\/$/, "");
 
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${frontendUrl}/create-profile?firstName=${user.firstName}&lastName=${user.lastName}&picture=${encodeURIComponent(user.picture)}`;
+    const frontendRedirect = `${frontendUrl}/create-profile?first_name=${user.first_name}&last_name=${user.last_name}&picture=${encodeURIComponent(user.picture)}`;
 
-    res.redirect(frontendRedirect);
     res.redirect(frontendRedirect);
   } catch (err) {
     console.error(err);
