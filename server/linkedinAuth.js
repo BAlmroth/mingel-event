@@ -57,14 +57,15 @@ router.get("/callback", async (req, res) => {
     console.log("PROFILE DATA:", profileData);
 
     const user = {
+      linkedin_id: profileData.sub,
       first_name: profileData.given_name,
       last_name: profileData.family_name,
       picture: profileData.picture,
     };
 
     const { data, error } = await supabase
-    .from("users")
-    .insert([user]);
+  .from("users")
+  .upsert([user], { onConflict: "linkedin_id" });
 
     if (error) {
       console.error("Supabase error:", error);
@@ -83,7 +84,6 @@ router.get("/callback", async (req, res) => {
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
     const frontendRedirect = `${frontendUrl}/create-profile?first_name=${user.first_name}&last_name=${user.last_name}&picture=${encodeURIComponent(user.picture)}`;
 
-    
     res.redirect(frontendRedirect);
   } catch (err) {
     console.error(err);
