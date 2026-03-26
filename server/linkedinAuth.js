@@ -75,13 +75,13 @@ router.get("/callback", async (req, res) => {
     console.log("URL:", process.env.SUPABASE_URL);
     console.log("KEY:", process.env.SUPABASE_KEY);
 
-    users.push(user);
-    console.log("saved user", user);
+    // users.push(user);
+    // console.log("saved user", user);
 
     const frontendUrl = process.env.FRONTEND_URL.replace(/\/$/, "");
 
     // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${frontendUrl}/create-profile?firstName=${user.firstName}&lastName=${user.lastName}&picture=${encodeURIComponent(user.picture)}`;
+    const frontendRedirect = `${frontendUrl}/create-profile?first_name=${user.first_name}&last_name=${user.last_name}&picture=${encodeURIComponent(user.picture)}`;
 
     
     res.redirect(frontendRedirect);

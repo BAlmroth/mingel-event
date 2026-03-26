@@ -16,12 +16,12 @@ export function CreateProfile() {
 
   // 👉 NEW: read LinkedIn data from URL
   useEffect(() => {
-    const firstName = searchParams.get("firstName");
-    const lastName = searchParams.get("lastName");
+    const first_name = searchParams.get("first_name");
+    const last_name = searchParams.get("last_name");
     const picture = searchParams.get("picture");
 
-    if (firstName && lastName) {
-      setName(`${firstName} ${lastName}`);
+    if (first_name && last_name) {
+      setName(`${first_name} ${last_name}`);
     }
     if (picture) {
       setImage(picture);
