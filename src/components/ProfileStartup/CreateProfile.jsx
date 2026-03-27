@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
 
+
 export function CreateProfile() {
   const role = localStorage.getItem("role");
   const isStudent = role === "student";
@@ -36,6 +37,7 @@ export function CreateProfile() {
   };
 
   return (
+    <>
     <section>
       <PageHeader />
 
@@ -43,8 +45,7 @@ export function CreateProfile() {
         <img
           src={image}
           alt="Profile picture"
-          style={{ width: "150px", borderRadius: "50%" }}
-        />
+          style={{ width: "150px", borderRadius: "50%" }} />
       )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
@@ -71,5 +72,6 @@ export function CreateProfile() {
         <button type="submit">Start the stalking</button>
       </form>
     </section>
+    </>
   );
 }
