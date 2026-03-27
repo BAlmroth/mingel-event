@@ -26,9 +26,10 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/callback", async (req, res) => {
-  const code = req.query.code;
-
   try {
+    const code = req.query.code;
+
+    //get access token
     const tokenResponse = await axios.post(
       "https://www.linkedin.com/oauth/v2/accessToken",
       qs.stringify({
@@ -43,19 +44,18 @@ router.get("/callback", async (req, res) => {
 
     const accessToken = tokenResponse.data.access_token;
 
+    // get user profile
     const profileResponse = await axios.get(
       "https://api.linkedin.com/v2/userinfo",
       {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+        headers: { Authorization: `Bearer ${accessToken}` },
       },
     );
 
-    // samla data för profilen ifrån linkedin
     const profileData = profileResponse.data;
     console.log("PROFILE DATA:", profileData);
 
+    // put user in Supabase
     const user = {
       linkedin_id: profileData.sub,
       first_name: profileData.given_name,
@@ -64,27 +64,25 @@ router.get("/callback", async (req, res) => {
     };
 
     const { data, error } = await supabase
-  .from("users")
-  .upsert([user], { onConflict: "linkedin_id" });
+      .from("users")
+      .upsert([user], { onConflict: "linkedin_id" })
+      .select()
+      .single(); // return single row
 
     if (error) {
       console.error("Supabase error:", error);
-    } else {
-      console.log("Saved user:", data);
+      return res.status(500).send("Database error");
     }
 
-    console.log("URL:", process.env.SUPABASE_URL);
-    console.log("KEY:", process.env.SUPABASE_KEY);
+    console.log("Saved LinkedIn user:", data);
 
-    // users.push(user);
-    // console.log("saved user", user);
+    //store user id in session
+    req.session.userId = data.id;
 
+    // Redirect to frontend with clean URL
     const frontendUrl = process.env.FRONTEND_URL.replace(/\/$/, "");
+    res.redirect(`${frontendUrl}/create-profile-linkedin`);
 
-    // Redirect tillbaka till CreateProfile.jsx med profil-data i query params
-    const frontendRedirect = `${frontendUrl}/create-profile?first_name=${user.first_name}&last_name=${user.last_name}&picture=${encodeURIComponent(user.picture)}`;
-
-    res.redirect(frontendRedirect);
   } catch (err) {
     console.error(err);
     res.status(500).send("LinkedIn login failed");
