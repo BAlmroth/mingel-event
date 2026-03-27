@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css"
 
-
 export function MyProfile() {
   const [user, setUser] = useState(null);
 
@@ -15,6 +14,8 @@ export function MyProfile() {
       if (!res.ok) return;
 
       const data = await res.json();
+
+    
 
       if (data) {
         fetchUserFromDB(data);
@@ -30,8 +31,8 @@ export function MyProfile() {
     const { data, error } = await supabase
       .from("users")
       .select("*")
-      .eq("name", fullName)
-      .single();
+      .eq("linkedin_id", linkedinUser.linkedin_id)
+      .maybeSingle();
 
     if (!error) {
       setUser(data);
@@ -39,6 +40,8 @@ export function MyProfile() {
   };
 
   const getInitials = (name) => {
+    if (!name) return "";
+
     return name
       .split(" ")
       .map((n) => n[0])
@@ -49,14 +52,17 @@ export function MyProfile() {
   if (!user) return <p>Loading...</p>;
 
 
-
   return (
     <section>
       <div className={styles.avatar}>
-        {getInitials(user.name)}
-      </div>
+        {user.picture ? (
+        <img src={user.picture} alt="profile" />
+        ) : (
+        getInitials(`${user.first_name} ${user.last_name}`)
+  )}
+</div>
 
-      <h2>{user.name}</h2>
+      <h2>{user.first_name} {user.last_name}</h2>
       <p>
         {user.role} • {user.description}
       </p>
