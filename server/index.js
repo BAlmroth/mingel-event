@@ -37,6 +37,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
 
+
 // store info trhough session, to avoid info in url
 app.get("/me", async (req, res) => {
   const userId = req.session.userId;
@@ -50,6 +51,25 @@ app.get("/me", async (req, res) => {
     .single();
 
   if (error) return res.status(500).json({ error: "User not found" });
+
+  res.json(data);
+});
+
+//UPDATE DATABSE TO INCLUDE ROLE AND DESCRIPTION
+app.post("/profile", async (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) return res.status(401).json({ error: "Not logged in" });
+
+  const { role, description } = req.body;
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ role, description })
+    .eq("id", userId)
+    .select()
+    .single();
+
+  if (error) return res.status(500).json({ error: "Failed to update profile" });
 
   res.json(data);
 });
