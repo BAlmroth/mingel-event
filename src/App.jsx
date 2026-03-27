@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ChooseRole />} />
         <Route path="/create-profile" element={<CreateProfile />} />
+        <Route path="/create-profile-linkedin" element={<CreateProfile />} /> {/*after linkedin login*/}
       </Routes>
     </>
   );
