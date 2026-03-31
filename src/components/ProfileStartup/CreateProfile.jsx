@@ -11,6 +11,7 @@ export function CreateProfile() {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [fun_fact, setFunfact] = useState("");
 
   //fetch logged-in LinkedIn user
   useEffect(() => {
@@ -37,7 +38,7 @@ export function CreateProfile() {
       method: "POST",
       credentials: "include", // sends the session cookie
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ role, description }),
+      body: JSON.stringify({ role, description, fun_fact }),
     });
 
     if (res.ok) {
@@ -89,6 +90,17 @@ export function CreateProfile() {
               isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
             }
             onChange={(e) => setDescription(e.target.value)}
+          />
+
+          <label htmlFor="funfact">Fun fact</label>
+          <input
+            id="fun_fact"
+            value={fun_fact}
+            type="text"
+            placeholder={
+              "e.g. Ask me about my favorite superhero "
+            }
+            onChange={(e) => setFunfact(e.target.value)}
           />
           <button type="submit">Start the stalking</button>
         </form>

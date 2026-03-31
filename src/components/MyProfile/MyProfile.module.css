@@ -17,13 +17,8 @@
     border-radius: 1rem;
 }
 
-.qrContainer {
-  background: white;
-  padding: 12px;
-  border-radius: 12px;
-  width: fit-content;
-  margin: 20px auto; 
-  border: 1px solid var(--border);
+.funFact {
+    padding: 2rem;
 }
 
 .stalkLater {

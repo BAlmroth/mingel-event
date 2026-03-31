@@ -4,8 +4,6 @@ import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css"
 import Star from "../../assets/Star.svg"
 
-
-
 export function MyProfile() {
   const { user, loading } = useUser();
 
@@ -37,6 +35,10 @@ export function MyProfile() {
           <p>
             {user.role} • {user.description}
           </p>
+      <div className={styles.funFact}>
+        <h4>MY FUN FACT:</h4>
+        <p>{user.fun_fact}</p>
+      </div>
       </div>
       <div className={styles.stalkLater}>
         <img src={Star} alt="stalk" className={styles.stalkBtn} />
