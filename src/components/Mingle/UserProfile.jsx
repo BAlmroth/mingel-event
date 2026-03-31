@@ -1,9 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useUser } from "../../hooks/UserContext";
 import Styles from "./UserProfile.module.css";
+import Star from "../../assets/Star.svg"
 
 export function UserProfile() {
-  const { user, loading } = useUser();
+  const { id } = useParams();
+  const { allUsers, loading } = useUser();
+
+  const user = allUsers?.find(u => u.id === id);
 
     const getInitials = (name) => {
     if (!name) return "";
@@ -23,7 +27,7 @@ export function UserProfile() {
       <h2 className={Styles.userInfo}>
         {user.first_name} {user.last_name}
       </h2>
-<div className={Styles.avatar}>
+      <div className={Styles.avatar}>
         {user.picture ? (
         <img src={user.picture} alt="profile" style={{ width: "150px", borderRadius: "50%", marginBottom: "1.5rem" }} />
         ) : (
@@ -38,6 +42,11 @@ export function UserProfile() {
         <p>{user.fun_fact}</p>
       </div>
       </div>
+      <div className={Styles.stalkLater}>
+        <img src={Star} alt="stalk" className={Styles.stalkStar} ></img>
+        <button className={Styles.stalkBtn} type="submit">Stalk for later</button>
+      </div>
+    
     </section>
   );
 }

@@ -23,6 +23,21 @@
 
 .stalkLater {
     display: flex;
-    justify-content: flex-start;
-    gap: 1rem;    
+    justify-content: center;
+    border: 1px solid var(--border); 
+    border-radius: 1rem;
+    padding: 0.5rem;
 }
+
+.stalkLater img {
+    margin-right: 1rem;
+}
+
+.stalkBtn {
+    background-color: transparent;
+    color: black;
+    gap: 1rem;
+    margin: 0;
+}
+
+
