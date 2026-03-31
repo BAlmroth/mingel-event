@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useUser } from "../../hooks/UserContext";
+import Styles from "./UserProfile.module.css";
 
 export function UserProfile() {
-  const { allUsers, loading } = useUser();
+  const { user, loading } = useUser();
 
     const getInitials = (name) => {
     if (!name) return "";
@@ -22,7 +23,7 @@ export function UserProfile() {
       <h2 className={Styles.userInfo}>
         {user.first_name} {user.last_name}
       </h2>
-<div className={styles.avatar}>
+<div className={Styles.avatar}>
         {user.picture ? (
         <img src={user.picture} alt="profile" style={{ width: "150px", borderRadius: "50%", marginBottom: "1.5rem" }} />
         ) : (
@@ -32,7 +33,7 @@ export function UserProfile() {
           <p>
             {user.role} • {user.description}
           </p>
-      <div className={styles.funFact}>
+      <div className={Styles.funFact}>
         <h4>MY FUN FACT:</h4>
         <p>{user.fun_fact}</p>
       </div>
