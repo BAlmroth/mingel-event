@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
+import { useNavigate } from "react-router-dom";
 
 export function CreateProfile() {
   const role = localStorage.getItem("role");
   const isStudent = role === "student";
+  const navigate = useNavigate();
 
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
@@ -39,8 +41,7 @@ export function CreateProfile() {
     });
 
     if (res.ok) {
-      // navigate to next page, e.g.:
-      // navigate("/dashboard")
+      navigate("/feed")
     } else {
       console.error("Failed to save profile");
     }
