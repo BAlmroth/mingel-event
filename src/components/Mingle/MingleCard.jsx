@@ -4,9 +4,9 @@ const getInitials = (firstName, lastName) => { //lägg i egen component då den 
   return `${firstName?.[0] ?? ""}${lastName?.[0] ?? ""}`.toUpperCase();
 };
 
-export function MingleCard({ user }) {
+export function MingleCard({ user ,onClick }) {
   return (
-    <div className={Styles.profileCard}>
+    <div onClick={onClick} className={Styles.profileCard}>
       <div className={Styles.leftField}>
         <div
           style={{
