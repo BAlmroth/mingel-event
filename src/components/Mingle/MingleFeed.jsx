@@ -1,17 +1,16 @@
 import { useState } from "react";
 import Styles from "./MingleFeed.module.css";
 import { MingleCard } from "./MingleCard";
+import { useUser } from "../../hooks/UserContext";
 
 const filters = ["All", "Students", "Industry"];
 
-const mockData = [
-  { name: "Rune Yrgosson", description: "Webbutvecklare", role: "Student", color: "#e51236" },
-  { name: "Rune Yrgosson", description: "Webbutvecklare", role: "Student", color: "#001A52" },
-  { name: "Rune Yrgosson", description: "Webbutvecklare", role: "Student", color: "#35D4D1" },
-];
-
 export function MingleFeed() {
+  const { allUsers, loading } = useUser();
   const [active, setActive] = useState("All");
+
+const roleMap = { Students: "student", Industry: "industry" };
+const filtered = active === "All" ? allUsers : allUsers.filter(u => u.role === roleMap[active]);
 
   return (
     <>
@@ -37,10 +36,16 @@ export function MingleFeed() {
       </section>
 
       <section className={Styles.MingleFeed}>
-        {mockData.map((person, i) => (
-          <MingleCard key={i} {...person} />
-        ))}
-        <small>{mockData.length} people in the room</small>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {filtered.map((person) => (
+              <MingleCard key={person.id} user={person} />
+            ))}
+            <small>{filtered.length} people in the room</small>
+          </>
+        )}
       </section>
     </>
   );
