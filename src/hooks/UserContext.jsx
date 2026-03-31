@@ -3,15 +3,28 @@ import supabase from "../lib/supabaseClient";
 
 const UserContext = createContext(null);
 
-export function UserProvider({children}) {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+export function UserProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [allUsers, setAllUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    // fetch all info from db
+  //fetch all
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await fetch("http://localhost:4000/me", { credentials: "include" });
-      if (!res.ok) { setLoading(false); return; }
+    const fetchData = async () => {
+      const { data: allData, error: allError } = await supabase
+        .from("users")
+        .select("*");
+
+      if (!allError) setAllUsers(allData);
+
+      //fetch your info on login
+      const res = await fetch("http://localhost:4000/me", {
+        credentials: "include",
+      });
+      if (!res.ok) {
+        setLoading(false);
+        return;
+      }
 
       const linkedinUser = await res.json();
 
@@ -21,23 +34,20 @@ export function UserProvider({children}) {
         .eq("linkedin_id", linkedinUser.linkedin_id)
         .maybeSingle();
 
-        //put data in const user
       if (!error) setUser(data);
       setLoading(false);
     };
 
-    fetchUser();
+    fetchData();
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, loading }}>
+    <UserContext.Provider value={{ user, allUsers, loading }}>
       {children}
     </UserContext.Provider>
   );
-
-};
+}
 
 export function useUser() {
   return useContext(UserContext);
-};
-
+}
