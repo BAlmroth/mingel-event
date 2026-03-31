@@ -1,0 +1,33 @@
+.profilesection {
+    padding-bottom: 1.5rem;
+    
+}
+
+.profileheader {
+    text-align: left;
+    font-weight: var(--regular-weight);
+    font-style: bold;
+    margin: 2rem 0;
+}
+
+.avatar {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    margin: 3rem 0;
+    border-radius: 1rem;
+}
+
+.qrContainer {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 20px auto; 
+  border: 1px solid var(--border);
+}
+
+.stalkLater {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;    
+}
