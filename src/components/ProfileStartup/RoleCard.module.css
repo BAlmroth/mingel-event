@@ -1,5 +1,5 @@
 .rolecard {
-    border: 1px solid #D9DDE6;
+    border: 1px solid var(--border);
     border-radius: 1rem;
     padding: 1rem 0.5rem;
     text-align: left;
@@ -14,8 +14,8 @@
   justify-content: center;
 }
 
-h3 {    
+.cardinfo h4 {    
     margin: 2px;
+    color: var(--text);
+    font-size: 18px;
 }
-
-

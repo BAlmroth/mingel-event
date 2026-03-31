@@ -4,11 +4,11 @@
     left: 0;
     right: 0;
     height: 70px;
-    background: white;
+    background: var(--bg);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid var(--border);
 }
   
 .joinBtn {
@@ -33,13 +33,13 @@
 }
 
 .joinText {
-  font-weight: 500;
-  color: #111827;
-  font-weight: 700;
+  font-weight: var(--thin-weight);
+  color: var(--text-h);
+  font-weight: var(--regular-weight);
 }
 
 .nav div {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--text-small);
 }
   

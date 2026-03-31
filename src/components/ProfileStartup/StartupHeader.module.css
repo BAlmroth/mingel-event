@@ -4,20 +4,24 @@
 }
 
 h1 {
-    font-size: 40px;
-    font-weight: 700;
-    margin-right: 7rem;
+    margin-right: 6rem;
     line-height: 1;
+}
+.roleInfo h4 {
+    color: var(--text-small);
+    font-weight: var(--thin-weight);
 }
 
 .backButton {
-    color: #60687A;
+    color: var(--text-small);
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: var(--regular-weight);
     margin-bottom: 3rem;
+    font-size: 20px;
+    font-weight: var(--thin-weight);
 }
 
 .headerp {
