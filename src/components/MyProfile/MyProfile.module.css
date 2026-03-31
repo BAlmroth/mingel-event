@@ -1,0 +1,15 @@
+.profilesection {
+    padding-bottom: 1.5rem;
+}
+
+.profileheader {
+    text-align: left;
+    font-weight: var(--regular-weight);
+    font-style: bold;
+    margin: 1rem;
+}
+
+.avatar {
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+}

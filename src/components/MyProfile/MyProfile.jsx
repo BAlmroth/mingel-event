@@ -53,19 +53,23 @@ export function MyProfile() {
 
 
   return (
-    <section>
+    <section className={styles.profilesection}>
+      <div className={styles.profileheader}>
+        <h5>YOUR PROFILE</h5>
+        <h1>Stalk me!</h1>
+      </div>
       <div className={styles.avatar}>
         {user.picture ? (
-        <img src={user.picture} alt="profile" />
+        <img src={user.picture} alt="profile" style={{ width: "150px", borderRadius: "50%" }} />
         ) : (
         getInitials(`${user.first_name} ${user.last_name}`)
   )}
-</div>
 
       <h2>{user.first_name} {user.last_name}</h2>
       <p>
         {user.role} • {user.description}
       </p>
+      </div>
     </section>
   );
 }
