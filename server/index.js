@@ -60,11 +60,11 @@ app.post("/profile", async (req, res) => {
   const userId = req.session.userId;
   if (!userId) return res.status(401).json({ error: "Not logged in" });
 
-  const { role, description } = req.body;
+  const { role, description, fun_fact } = req.body;
 
   const { data, error } = await supabase
     .from("users")
-    .update({ role, description })
+    .update({ role, description, fun_fact })
     .eq("id", userId)
     .select()
     .single();
