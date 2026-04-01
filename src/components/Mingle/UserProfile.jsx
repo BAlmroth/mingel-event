@@ -4,10 +4,10 @@ import Styles from "./UserProfile.module.css";
 import Star from "../../assets/Star.svg"
 
 export function UserProfile() {
-  const { id } = useParams();
   const { allUsers, loading } = useUser();
+  const { username } = useParams();
 
-  const user = allUsers?.find(u => u.id === id);
+  const user = allUsers?.find(u => u.username === username);
 
     const getInitials = (name) => {
     if (!name) return "";
@@ -18,9 +18,8 @@ export function UserProfile() {
       .toUpperCase();
   };
 
-
   if (loading) return <p>Loading...</p>;
-  if (!user) return <p>Person not found</p>;
+  if (!user && !loading) return <p>Person not found</p>;
 
   return (
     <section>

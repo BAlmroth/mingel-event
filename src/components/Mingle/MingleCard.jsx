@@ -9,7 +9,7 @@ export function MingleCard({ user }) {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/profiles/${user.id}`)} className={Styles.profileCard}>
+    <div onClick={() => navigate(`/profiles/${user.username}`)} className={Styles.profileCard}>
       <div className={Styles.leftField}>
         <div
           style={{
