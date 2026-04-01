@@ -2,12 +2,14 @@ import { useState } from "react";
 import Styles from "./MingleFeed.module.css";
 import { MingleCard } from "./MingleCard";
 import { useUser } from "../../hooks/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const filters = ["All", "Students", "Industry"];
 
 export function MingleFeed() {
   const { allUsers, loading } = useUser();
   const [active, setActive] = useState("All");
+  const navigate = useNavigate();
 
 const roleMap = { Students: "student", Industry: "industry" };
 const filtered = active === "All" ? allUsers : allUsers.filter(u => u.role === roleMap[active]);
@@ -41,7 +43,7 @@ const filtered = active === "All" ? allUsers : allUsers.filter(u => u.role === r
         ) : (
           <>
             {filtered.map((person) => (
-              <MingleCard key={person.id} user={person} />
+              <MingleCard key={person.id} user={person} onClick={() => {navigate("/profiles")}}/>
             ))}
             <small>{filtered.length} people in the room</small>
           </>

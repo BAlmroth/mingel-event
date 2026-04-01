@@ -4,6 +4,7 @@ import { BottomNav } from "./components/Navigation/BottomNav";
 import { MingleFeed } from "./components/Mingle/MingleFeed";
 import { Routes, Route } from "react-router-dom";
 import { MyProfile } from "./components/MyProfile/MyProfile";
+import { UserProfile } from "./components/Mingle/UserProfile";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/create-profile-linkedin" element={<CreateProfile />} /> {/*after linkedin login*/}
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/feed" element={<MingleFeed />} />
+        <Route path="/profiles/:id" element={<UserProfile />} />
       </Routes>
       <BottomNav />
     </>

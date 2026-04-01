@@ -1,12 +1,15 @@
 import Styles from "./MingleFeed.module.css";
+import { useNavigate } from "react-router-dom";
 
 const getInitials = (firstName, lastName) => { //lägg i egen component då den används flera gånger
   return `${firstName?.[0] ?? ""}${lastName?.[0] ?? ""}`.toUpperCase();
 };
 
 export function MingleCard({ user }) {
+  const navigate = useNavigate();
+
   return (
-    <div className={Styles.profileCard}>
+    <div onClick={() => navigate(`/profiles/${user.id}`)} className={Styles.profileCard}>
       <div className={Styles.leftField}>
         <div
           style={{
