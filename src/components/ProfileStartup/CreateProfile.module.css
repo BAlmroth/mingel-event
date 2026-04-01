@@ -1,0 +1,46 @@
+
+/* avvakta dd design */
+.inputInfo {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    line-height: 1.5;
+    
+}
+
+.greeting { 
+    text-align: center;
+    font-size: 2rem;   
+}
+
+.greeting p {
+    font-size: 1.5rem;
+}
+
+
+.profileInfo{
+    text-align: left;
+    margin-top: 5rem;
+}
+
+
+input {
+    padding: 1rem 0;
+    border-radius: 1rem;
+    border: 2px solid var(--border); 
+    background-color: var(--input-bg);
+}
+
+
+::placeholder {
+    padding-left: 0.5rem;
+}
+
+label {
+    text-align: left;
+    margin: 1rem 0 0.4rem;
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+

@@ -1,0 +1,21 @@
+.rolecard {
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1rem 0.5rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.cardinfo {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardinfo h4 {    
+    margin: 2px;
+    color: var(--text);
+    font-size: 18px;
+}

@@ -1,0 +1,101 @@
+.top {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.mingleHeader {
+  text-align: left;
+  font-weight: var(--regular-weight);
+  font-style: bold;
+  margin: 1rem;
+}
+
+.mingleHeader p {
+  color: var(--accent);
+}
+
+.mingleHeader h2 {
+  font-weight: var(--regular-weight);
+  font-size: 2rem;
+  margin: 0 0 1.5rem;
+}
+.dot {
+  display: inline-block;
+  background-color: var(--accent);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+
+.live {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter {
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  gap: 2px;
+  background-color: var(--input-bg);
+}
+
+.filterButton {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 1rem;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-small);
+  font-weight: var(--thin-weight);
+  transition: all 0.15s ease;
+  margin: 0.3rem;
+}
+
+.active {
+  background: var(--bg);
+  color: var(--text-h);
+  font-weight: var(--regular-weight);
+}
+/* PROOFILE CARD  */
+
+.profileCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.role {
+  background-color: #e5123624;
+  font-weight: var(--regular-weight);
+  color: #e51236;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+.profileText {
+    text-align: start;
+}
+.profileText h5 {
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.leftField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+small {
+  color: var(--text-small);
+}
