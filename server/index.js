@@ -23,25 +23,18 @@ app.use(cors({
   credentials: true 
 }));
 
-//session
 app.use(
   session({
     secret: "mysecret",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // true in production (https)
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
     },
   }),
 );
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello from the backend!" });
-});
-
-
-// store info trhough session, to avoid info in url
 app.get("/me", async (req, res) => {
   const userId = req.session.userId;
 
@@ -58,7 +51,6 @@ app.get("/me", async (req, res) => {
   res.json(data);
 });
 
-//UPDATE DATABSE TO INCLUDE ROLE AND DESCRIPTION
 app.post("/profile", async (req, res) => {
   const userId = req.session.userId;
   if (!userId) return res.status(401).json({ error: "Not logged in" });
@@ -78,6 +70,12 @@ app.post("/profile", async (req, res) => {
 });
 
 app.use("/auth/linkedin", linkedinAuth);
+
+app.use(express.static(path.join(__dirname, "../dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
