@@ -42,7 +42,7 @@ export function CreateProfile() {
     });
 
     if (res.ok) {
-      navigate("/feed")
+      window.location.href = "/feed";
     } else {
       console.error("Failed to save profile");
     }
