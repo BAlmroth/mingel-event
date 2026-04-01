@@ -18,7 +18,7 @@ export function UserProvider({ children }) {
       if (!allError) setAllUsers(allData);
 
       //fetch your info on login
-      const res = await fetch("http://localhost:4000/me", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
         credentials: "include",
       });
       if (!res.ok) {
