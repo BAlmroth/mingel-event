@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
 
-// store info trhough session, to avoid info in url
+// store info through session, to avoid info in url
 app.get("/me", async (req, res) => {
   const userId = req.session.userId;
 
