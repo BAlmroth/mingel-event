@@ -15,6 +15,7 @@ import cors from "cors";
 import linkedinAuth from "./linkedinAuth.js";
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
@@ -25,12 +26,13 @@ app.use(cors({
 
 app.use(
   session({
-    secret: "mysecret",
+    secret: process.env.SESSION_SECRET || "mysecret",
     resave: false,
     saveUninitialized: false,
     cookie: {
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   }),
 );
