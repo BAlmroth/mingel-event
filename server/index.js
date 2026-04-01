@@ -37,7 +37,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from the backend!" });
 });
 
-
 // store info trhough session, to avoid info in url
 app.get("/me", async (req, res) => {
   const userId = req.session.userId;
@@ -62,9 +61,21 @@ app.post("/profile", async (req, res) => {
 
   const { role, description, fun_fact } = req.body;
 
+  const { data: user, error: userError } = await supabase
+    .from("users")
+    .select("first_name, last_name")
+    .eq("id", userId)
+    .single();
+
+    if (userError) {return res.status(500).json({ error: "User fetch failed" });}
+
+    const username = `${user.first_name}-${user.last_name}-${userId.slice(0, 4)}`
+    .toLowerCase()
+    .replace(/\s+/g, "-");
+
   const { data, error } = await supabase
     .from("users")
-    .update({ role, description, fun_fact })
+    .update({ role, description, fun_fact, username })
     .eq("id", userId)
     .select()
     .single();

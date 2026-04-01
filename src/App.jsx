@@ -15,7 +15,7 @@ function App() {
         <Route path="/create-profile-linkedin" element={<CreateProfile />} /> {/*after linkedin login*/}
         <Route path="/profile" element={<MyProfile />} />
         <Route path="/feed" element={<MingleFeed />} />
-        <Route path="/profiles/:id" element={<UserProfile />} />
+        <Route path="/profiles/:username" element={<UserProfile />} />
       </Routes>
       <BottomNav />
     </>
