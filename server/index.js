@@ -37,9 +37,7 @@ app.use(
   }),
 );
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hello from the backend!" });
-});
+
 
 // store info through session, to avoid info in url
 app.get("/me", async (req, res) => {
