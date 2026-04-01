@@ -15,7 +15,7 @@ export function CreateProfile() {
 
   //fetch logged-in LinkedIn user
   useEffect(() => {
-    fetch("http://localhost:4000/me", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_API_URL}/me`, { credentials: "include" })
       .then((res) => {
         if (!res.ok) return null;
         return res.json();
@@ -34,7 +34,7 @@ export function CreateProfile() {
 
     const role = localStorage.getItem("role");
 
-    const res = await fetch("http://localhost:4000/profile", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
       method: "POST",
       credentials: "include", // sends the session cookie
       headers: { "Content-Type": "application/json" },
@@ -49,9 +49,9 @@ export function CreateProfile() {
   };
 
   // LinkedIn login button is only shown if not logged in
-  const handleLinkedInLogin = () => {
-    window.location.href = "http://localhost:4000/auth/linkedin/login";
-  };
+const handleLinkedInLogin = () => {
+  window.location.href = `${import.meta.env.VITE_API_URL}/auth/linkedin/login`;
+};
 
   return (
     <>

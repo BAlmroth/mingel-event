@@ -15,20 +15,24 @@ import cors from "cors";
 import linkedinAuth from "./linkedinAuth.js";
 
 const app = express();
-const PORT = 4000;
+app.set("trust proxy", 1);
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ 
+  origin: process.env.CLIENT_URL || "http://localhost:5173", 
+  credentials: true 
+}));
 
-//session
 app.use(
   session({
-    secret: "mysecret",
+    secret: process.env.SESSION_SECRET || "mysecret",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // true in production (https)
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   }),
 );
@@ -54,7 +58,6 @@ app.get("/me", async (req, res) => {
   res.json(data);
 });
 
-//UPDATE DATABSE TO INCLUDE ROLE AND DESCRIPTION
 app.post("/profile", async (req, res) => {
   const userId = req.session.userId;
   if (!userId) return res.status(401).json({ error: "Not logged in" });
@@ -86,6 +89,12 @@ app.post("/profile", async (req, res) => {
 });
 
 app.use("/auth/linkedin", linkedinAuth);
+
+app.use(express.static(path.join(__dirname, "../dist")));
+
+app.get("/{*path}", (req, res) => {
+  res.sendFile(path.join(__dirname, "../dist/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
