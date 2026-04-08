@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useUser } from "../../hooks/UserContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import supabase from "../../lib/supabaseClient";
 import styles from "./EditMyProfile.module.css";
+import BackArrow from "../../assets/BackArrow.svg";
 
 export function EditMyProfile() {
   const { user, loading, updateUser } = useUser();
@@ -45,6 +46,10 @@ export function EditMyProfile() {
           <h5>EDIT</h5>
           <h1>Personal Card!</h1>
         </div>
+        <Link to="/profile" className={styles.backButton}>
+        <img src={BackArrow} alt="back arrow" />
+        Back
+      </Link>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <label className={styles.label}>Program</label>

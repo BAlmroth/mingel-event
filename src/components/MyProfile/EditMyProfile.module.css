@@ -89,3 +89,15 @@
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+.backButton {
+    color: var(--text-small);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-weight: var(--regular-weight);
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-weight: var(--thin-weight);
+}
