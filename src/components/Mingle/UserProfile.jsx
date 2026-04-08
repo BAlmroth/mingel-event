@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useUser } from "../../hooks/UserContext";
 import Styles from "./UserProfile.module.css";
 import Star from "../../assets/Star.svg"
+import BackArrow from "../../assets/BackArrow.svg";
 
 export function UserProfile() {
   const { allUsers, loading } = useUser();
@@ -23,6 +24,10 @@ export function UserProfile() {
 
   return (
     <section>
+      <Link to="/feed" className={Styles.backButton}>
+        <img src={BackArrow} alt="back arrow" />
+        Back
+      </Link>
       <h2 className={Styles.userInfo}>
         {user.first_name} {user.last_name}
       </h2>

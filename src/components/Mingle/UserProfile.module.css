@@ -1,6 +1,9 @@
 .profilesection {
     padding-bottom: 1.5rem;
-    
+}
+
+.userInfo {
+    text-align: left;
 }
 
 .profileheader {
@@ -38,6 +41,19 @@
     color: black;
     gap: 1rem;
     margin: 0;
+}
+
+.backButton {
+    color: var(--text-small);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-weight: var(--regular-weight);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: 20px;
+    font-weight: var(--thin-weight);
 }
 
 
