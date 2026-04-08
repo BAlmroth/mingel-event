@@ -53,7 +53,7 @@ export function MingleFeed() {
             type="text"
             placeholder="Search name, company or program"
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value.trim().slice(0, 100))}
             className={Styles.searchInput}
           />
         </div>
