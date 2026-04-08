@@ -49,7 +49,7 @@ export function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, allUsers, loading }}>
+    <UserContext.Provider value={{ user, allUsers, loading, updateUser }}>
       {children}
     </UserContext.Provider>
   );
