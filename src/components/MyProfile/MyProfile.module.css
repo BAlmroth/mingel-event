@@ -1,6 +1,5 @@
 .profilesection {
-    padding-bottom: 1.5rem;
-    
+    padding-bottom: 1.5rem;  
 }
 
 .profileheader {
@@ -8,6 +7,12 @@
     font-weight: var(--regular-weight);
     font-style: bold;
     margin: 2rem 0;
+}
+
+.titleRow {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .avatar {
@@ -25,4 +30,18 @@
     display: flex;
     justify-content: flex-start;
     gap: 1rem;    
+}
+
+.editBtn {
+    background: red;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.editBtn img {
+    width: 3rem;
+    height: 3rem;
 }

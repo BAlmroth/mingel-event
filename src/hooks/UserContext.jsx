@@ -41,8 +41,15 @@ export function UserProvider({ children }) {
     fetchData();
   }, []);
 
+  const updateUser = (updatedData) => {
+    setUser((prev) => ({ ...prev, ...updatedData }));
+    setAllUsers((prev) =>
+      prev.map((u) => (u.id === updatedData.id ? { ...u, ...updatedData } : u))
+    );
+  };
+
   return (
-    <UserContext.Provider value={{ user, allUsers, loading }}>
+    <UserContext.Provider value={{ user, allUsers, loading, updateUser }}>
       {children}
     </UserContext.Provider>
   );

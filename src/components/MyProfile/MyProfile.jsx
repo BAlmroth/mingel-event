@@ -1,11 +1,14 @@
 import { useUser } from "../../hooks/UserContext";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css"
 import Star from "../../assets/Star.svg"
+import Edit from "../../assets/Edit.svg"
 
 export function MyProfile() {
   const { user, loading } = useUser();
+  const navigate = useNavigate();
 
   const getInitials = (name) => {
     if (!name) return "";
@@ -23,7 +26,13 @@ export function MyProfile() {
     <section className={styles.profilesection}>
       <div className={styles.profileheader}>
         <h5>YOUR PROFILE</h5>
-        <h1>Stalk me!</h1>
+        <div className={styles.titleRow}>
+          <h1>Stalk me!</h1>
+          <button 
+            className={styles.editBtn} 
+            onClick={() => navigate("/profile/edit")}>
+            <img src={Edit} alt="Edit profile" /></button>
+        </div>
       </div>
       <div className={styles.avatar}>
         {user.picture ? (
