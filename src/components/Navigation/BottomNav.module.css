@@ -4,11 +4,12 @@
     left: 0;
     right: 0;
     height: 70px;
-    background: var(--bg);
+    background: black;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-top: 1px solid var(--border);
+    
 }
   
 .joinBtn {
@@ -41,5 +42,16 @@
 .nav div {
   font-size: 13px;
   color: var(--text-small);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.icon {
+  width: 3rem;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
   
