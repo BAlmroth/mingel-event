@@ -67,7 +67,7 @@ export function MyProfile() {
       </div>
       <div className={styles.stalkLater}>
         <img src={Star} alt="stalk" className={styles.stalkBtn} />
-        <h3>Stalk for later</h3>
+        <h3>Stalking for later</h3>
       </div>
         <div className={styles.stalkedFeed}>
           {likedProfiles.map((p) => (

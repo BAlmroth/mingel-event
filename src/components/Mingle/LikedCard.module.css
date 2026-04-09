@@ -13,9 +13,24 @@
 
 .starBtn {
   width: 24px;
-  cursor: pointer;
+}
+
+.profileCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  text-align: left;
 }
 
 .leftField {
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
