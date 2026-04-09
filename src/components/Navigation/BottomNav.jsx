@@ -8,7 +8,7 @@ import stalkerBtn from "../../assets/Stalker.svg"
 export function BottomNav() {
     const navigate = useNavigate()
     const location = useLocation()
-    const { user } = useUser()
+    const { user, loading } = useUser()
 
     return (
         <nav className={styles.nav}>
@@ -20,7 +20,7 @@ export function BottomNav() {
           <p>Mingle Feed</p>
         </div>
     
-        {!user && (
+        {!loading && !user && (
         <div className={styles.joinWrapper}>
           <img
             src={joinBtn}
