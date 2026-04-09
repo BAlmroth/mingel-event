@@ -7,6 +7,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [likedIds, setLikedIds] = useState([]);
 
   //fetch all
   useEffect(() => {
@@ -34,7 +35,16 @@ export function UserProvider({ children }) {
         .eq("linkedin_id", linkedinUser.linkedin_id)
         .maybeSingle();
 
-      if (!error) setUser(data);
+      if (!error && data) {
+        setUser(data); //spara info om inloggad person
+
+        const { data: likesData } = await supabase //hämta profilens liked profiles
+          .from("likes")
+          .select("liked_id")
+          .eq("liker_id", data.id);
+        if (likesData) setLikedIds(likesData.map((l) => l.liked_id));
+      }
+
       setLoading(false);
     };
 
@@ -44,12 +54,42 @@ export function UserProvider({ children }) {
   const updateUser = (updatedData) => {
     setUser((prev) => ({ ...prev, ...updatedData }));
     setAllUsers((prev) =>
-      prev.map((u) => (u.id === updatedData.id ? { ...u, ...updatedData } : u))
+      prev.map((u) => (u.id === updatedData.id ? { ...u, ...updatedData } : u)),
     );
   };
 
+  //like profile
+  const likeUser = async (likedId) => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("likes")
+      .insert({ liker_id: user.id, liked_id: likedId });
+    if (!error) setLikedIds((prev) => [...prev, likedId]);
+  };
+
+  //unlike
+  const unlikeUser = async (likedId) => {
+    if (!user) return;
+    const { error } = await supabase
+      .from("likes")
+      .delete()
+      .eq("liker_id", user.id)
+      .eq("liked_id", likedId);
+    if (!error) setLikedIds((prev) => prev.filter((id) => id !== likedId));
+  };
+
   return (
-    <UserContext.Provider value={{ user, allUsers, loading, updateUser }}>
+    <UserContext.Provider
+      value={{
+        user,
+        allUsers,
+        likedIds,
+        likeUser,
+        unlikeUser,
+        loading,
+        updateUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

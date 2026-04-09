@@ -1,16 +1,24 @@
 import { useParams, Link } from "react-router-dom";
 import { useUser } from "../../hooks/UserContext";
 import Styles from "./UserProfile.module.css";
-import Star from "../../assets/Star.svg"
+import Star from "../../assets/Star.svg";
 import BackArrow from "../../assets/BackArrow.svg";
 
 export function UserProfile() {
-  const { allUsers, loading } = useUser();
+  const {
+    allUsers,
+    loading,
+    likedIds = [],
+    likeUser,
+    unlikeUser,
+    user: loggedInUser,
+  } = useUser();
   const { username } = useParams();
 
-  const user = allUsers?.find(u => u.username === username);
+  const user = allUsers?.find((u) => u.username === username);
+  const isLiked = likedIds.includes(user?.id);
 
-    const getInitials = (name) => {
+  const getInitials = (name) => {
     if (!name) return "";
     return name
       .split(" ")
@@ -33,24 +41,46 @@ export function UserProfile() {
       </h2>
       <div className={Styles.avatar}>
         {user.picture ? (
-        <img src={user.picture} alt="profile" style={{ width: "150px", borderRadius: "50%", marginBottom: "1.5rem" }} />
+          <img
+            src={user.picture}
+            alt="profile"
+            style={{
+              width: "150px",
+              borderRadius: "50%",
+              marginBottom: "1.5rem",
+            }}
+          />
         ) : (
-        getInitials(`${user.first_name} ${user.last_name}`)
-  )}
-          <h2>{user.first_name} {user.last_name}</h2>
-          <p>
-            {user.role} • {user.description}
-          </p>
-      <div className={Styles.funFact}>
-        <h4>MY FUN FACT:</h4>
-        <p>{user.fun_fact}</p>
+          getInitials(`${user.first_name} ${user.last_name}`)
+        )}
+        <h2>
+          {user.first_name} {user.last_name}
+        </h2>
+        <p>
+          {user.role} • {user.description}
+        </p>
+        <div className={Styles.funFact}>
+          <h4>MY FUN FACT:</h4>
+          <p>{user.fun_fact}</p>
+        </div>
       </div>
-      </div>
-      <div className={Styles.stalkLater}>
-        <img src={Star} alt="stalk" className={Styles.stalkStar} ></img>
-        <button className={Styles.stalkBtn} type="submit">Stalk for later</button>
-      </div>
-    
+      {/* only show if logge in and not looking at your own profile */}
+      {loggedInUser && loggedInUser.username !== username && (
+        <div
+          className={Styles.stalkLater}
+          onClick={() => (isLiked ? unlikeUser(user.id) : likeUser(user.id))} //add or unadd user from db table likes
+        >
+          <img
+            src={Star}
+            alt="stalk"
+            className={Styles.stalkStar}
+            style={{ opacity: isLiked ? 1 : 0.3 }}
+          />
+          <button className={Styles.stalkBtn} type="button">
+            {isLiked ? "Stalking!" : "Stalk for later"}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
