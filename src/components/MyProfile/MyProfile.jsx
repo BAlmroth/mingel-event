@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { LikedCard } from "../Mingle/LikedCard";
 import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css";
-import Star from "../../assets/Star.svg";
-import Edit from "../../assets/Edit.svg";
+import { Star, Edit } from "../../assets/Star.svg";
 import search from "../../assets/Filter/search.svg"
 
 export function MyProfile() {
@@ -29,7 +28,7 @@ export function MyProfile() {
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>Not logged in</p>;
 
-  //gå igenom all users, om de stämmer med liked id (de man gillat) läggs de i const Liked Profiles
+  // gå igenom all users, om de stämmer med liked id (de man gillat) läggs de i const Liked Profiles
   const likedProfiles = allUsers.filter((u) => likedIds.includes(u.id));
 
   return (
