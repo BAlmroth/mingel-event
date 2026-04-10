@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { MyProfile } from "./components/MyProfile/MyProfile";
 import { UserProfile } from "./components/Mingle/UserProfile";
 import { EditMyProfile } from "./components/MyProfile/EditMyProfile";
+import { Error } from "./components/Error/Error";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/profile/edit" element={<EditMyProfile />} />
         <Route path="/feed" element={<MingleFeed />} />
         <Route path="/profiles/:username" element={<UserProfile />} />
+        <Route path="/error" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <BottomNav />
     </>
