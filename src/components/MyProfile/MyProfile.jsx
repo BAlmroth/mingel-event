@@ -28,7 +28,6 @@ export function MyProfile() {
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>Not logged in</p>;
 
-  // gå igenom all users, om de stämmer med liked id (de man gillat) läggs de i const Liked Profiles
   const likedProfiles = allUsers.filter((u) => likedIds.includes(u.id));
 
   return (
