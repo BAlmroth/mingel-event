@@ -6,6 +6,7 @@ import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css";
 import Star from "../../assets/Star.svg";
 import Edit from "../../assets/Edit.svg";
+import search from "../../assets/Filter/search.svg"
 
 export function MyProfile() {
   const { user, loading, allUsers, likedIds = [], unlikeUser, logOut } = useUser();
@@ -18,6 +19,11 @@ export function MyProfile() {
       .map((n) => n[0])
       .join("")
       .toUpperCase();
+  };
+
+  const handleLogout = async () => {
+    await logOut();
+    navigate("/");
   };
 
   if (loading) return <p>Loading...</p>;
@@ -38,6 +44,12 @@ export function MyProfile() {
           >
             <img src={Edit} alt="Edit profile" />
           </button>
+          <button
+              className={styles.editBtn}
+              onClick={handleLogout}
+            >
+              <img src={search} alt="Logout" />
+            </button>
         </div>
       </div>
       <div className={styles.avatar}>
