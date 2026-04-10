@@ -1,12 +1,12 @@
 :root {
   /* --text: #6b6375; */
-  --text-h: #000;
-  --text-small: #60687a;
+  --text-h: #FFFFFF;
+  --text-small: #BFBFBF;
   
-  --bg: #fff;
-  --border: #D9DDE6;
-  --input-bg: #F0F1F5;
-  --accent: #D2002C;
+  --bg: #212121;
+  --border: #FFFFFF;
+  --input-bg: #4F4F4F;
+  --accent: #E51236;
   --sans: 'Inter', system-ui, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -16,8 +16,8 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
+  /* color-scheme: light dark; */
+  color: var(--text-h);
   background: var(--bg);
   /* font-synthesis: none; */
   /* text-rendering: optimizeLegibility;

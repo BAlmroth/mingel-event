@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import styles from "./BottomNav.module.css"
 import joinBtn from "../../assets/joinBtn.svg"
 import { useUser } from "../../hooks/UserContext"
-import searchImg from "../../assets/Filter/search.svg"
+import searchImg from "../../assets/search.svg"
 import stalkerBtn from "../../assets/Stalker.svg"
 
 export function BottomNav() {

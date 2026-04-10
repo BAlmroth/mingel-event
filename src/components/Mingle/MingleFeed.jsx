@@ -2,7 +2,7 @@ import { useState } from "react";
 import Styles from "./MingleFeed.module.css";
 import { MingleCard } from "./MingleCard";
 import { useUser } from "../../hooks/UserContext";
-import searchImage from "../../assets/Filter/search.svg";
+import searchImage from "../../assets/search.svg";
 
 const filters = ["All", "Students", "Industry"];
 

@@ -75,9 +75,9 @@
 }
 
 .role {
-  background-color: #e5123624;
+  background-color: var(--accent);
   font-weight: var(--regular-weight);
-  color: #e51236;
+  color: var(--text-h);
   padding: 0.5rem 1rem;
   border-radius: 2rem;
 }
@@ -121,5 +121,6 @@ small {
   width: 100%;
   padding: 1rem 1rem 1rem 60px;
   margin-bottom: 1rem;
+  border: 1px solid var(--border);
 }
 
