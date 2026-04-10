@@ -1,0 +1,39 @@
+.errorSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding-bottom: 6.25rem; 
+}
+  
+.errorContainer {
+    text-align: center;
+    padding: 2rem;
+}
+
+.errorContainer h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--accent);
+}
+
+.errorContainer h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    color: var(--text-h);
+}
+
+.errorContainer p {
+    color: var(--text-small);
+    margin: 1rem 0 2rem 0;
+    font-size: 1rem;
+}
+
+.errorIcon {
+    width: 10rem; 
+    height: 10rem; 
+    margin-bottom: 1.5rem;
+}

@@ -20,7 +20,7 @@ export function Error() {
             : "Please try again later"
           }
         </p>
-        <button onClick={() => navigate("/feed")} className={styles.errorBtn}>
+        <button onClick={() => navigate("/feed")} >
           Go Back to Feed
         </button>
       </div>
