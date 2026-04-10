@@ -33,7 +33,7 @@
 }
 
 .editBtn {
-    background: red;
+    background: var(--accent);
     border: none;
     padding: 0;
     cursor: pointer;
