@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import supabase from "../../lib/supabaseClient";
 import styles from "./EditMyProfile.module.css";
 
-
 export function EditMyProfile() {
   const { user, loading, updateUser } = useUser();
   const navigate = useNavigate();

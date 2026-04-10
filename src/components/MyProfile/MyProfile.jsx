@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { LikedCard } from "../Mingle/LikedCard";
 import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css";
-import { Star, Edit } from "../../assets/Star.svg";
-import search from "../../assets/Filter/search.svg"
+import Star from "../../assets/Star.svg"; // går det att kombinera dessa till en rad?
+import Edit from "../../assets/Edit.svg"; // går det att kombinera dessa till en rad?
+import search from "../../assets/search.svg"
 
 export function MyProfile() {
   const { user, loading, allUsers, likedIds = [], unlikeUser, logOut } = useUser();

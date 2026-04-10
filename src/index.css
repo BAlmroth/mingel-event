@@ -133,3 +133,11 @@ button {
     border: none;
     font-family: var(--sans);
 }
+
+input {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--border); 
+    background-color: var(--input-bg);
+    color: var(--text-h);
+}
