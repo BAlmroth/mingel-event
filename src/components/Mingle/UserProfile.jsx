@@ -59,6 +59,8 @@ export function UserProfile() {
         <p>
           {user.role} • {user.description}
         </p>
+        <h4>Email</h4>
+        <h5>{user.email}</h5>
         <div className={Styles.funFact}>
           <h4>MY FUN FACT:</h4>
           <p>{user.fun_fact}</p>

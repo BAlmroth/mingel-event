@@ -9,6 +9,7 @@ export function EditMyProfile() {
   const { user, loading, updateUser } = useUser();
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState(user?.email || "");
   const [description, setDescription] = useState(user?.description || "");
   const [funFact, setFunFact] = useState(user?.fun_fact || "");
   const [saving, setSaving] = useState(false);
@@ -22,6 +23,7 @@ export function EditMyProfile() {
       .update({
         description,
         fun_fact: funFact,
+        email,
       })
       .eq("id", user.id)
       .select()
@@ -47,6 +49,14 @@ export function EditMyProfile() {
           <h1>Personal Card!</h1>
         </div>
         <form onSubmit={handleSubmit} className={styles.form}>
+          <label className={styles.label}>Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="email@gmail.com"
+            className={styles.input}
+          />
           <label className={styles.label}>Program</label>
           <input
             type="text"
