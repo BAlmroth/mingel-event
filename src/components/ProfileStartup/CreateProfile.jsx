@@ -10,6 +10,7 @@ export function CreateProfile() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [fun_fact, setFunfact] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/me`, { credentials: "include" })
@@ -20,6 +21,7 @@ export function CreateProfile() {
           setImage(data.picture);
           if (data.description) setDescription(data.description);
           if (data.fun_fact) setFunfact(data.fun_fact);
+          if (data.email) setEmail(data.email);
         }
       })
       .catch((err) => console.error("Fetch /me failed:", err));
@@ -31,7 +33,7 @@ export function CreateProfile() {
       method: "POST",
       credentials: "include", // sends the session cookie
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ role, description, fun_fact }),
+      body: JSON.stringify({ role, description, fun_fact, email }),
     });
     if (res.ok) {
       window.location.href = "/feed";
@@ -41,17 +43,27 @@ export function CreateProfile() {
   };
 
   // LinkedIn login button is only shown if not logged in
-const handleLinkedInLogin = () => {
-  window.location.href = `${import.meta.env.VITE_API_URL}/auth/linkedin/login`;
-};
+  const handleLinkedInLogin = () => {
+    window.location.href = `${import.meta.env.VITE_API_URL}/auth/linkedin/login`;
+  };
 
   return (
     <section>
       <PageHeader />
-      {image && <img src={image} alt="Profile picture" style={{ width: "150px", borderRadius: "50%" }} />}
+      {image && (
+        <img
+          src={image}
+          alt="Profile picture"
+          style={{ width: "150px", borderRadius: "50%" }}
+        />
+      )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
-        {!name && <button type="button" onClick={handleLinkedInLogin}>Log in with LinkedIn</button>}
+        {!name && (
+          <button type="button" onClick={handleLinkedInLogin}>
+            Log in with LinkedIn
+          </button>
+        )}
 
         {name && (
           <div className={Styles.greeting}>
@@ -60,13 +72,24 @@ const handleLinkedInLogin = () => {
           </div>
         )}
 
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          value={email}
+          type="email"
+          placeholder="your emailadress"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
         <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
         <input
           id="company"
           name={isStudent ? "program" : "company"}
           value={description}
           type="text"
-          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
+          placeholder={
+            isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
+          }
           onChange={(e) => setDescription(e.target.value)}
         />
 

@@ -60,7 +60,7 @@ app.post("/profile", async (req, res) => {
   const userId = req.session.userId;
   if (!userId) return res.status(401).json({ error: "Not logged in" });
 
-  const { role, description, fun_fact } = req.body;
+  const { role, description, fun_fact, email } = req.body;
 
   const { data: user, error: userError } = await supabase
     .from("users")
@@ -76,7 +76,7 @@ app.post("/profile", async (req, res) => {
 
   const { data, error } = await supabase
     .from("users")
-    .update({ role, description, fun_fact, username })
+    .update({ role, description, fun_fact, username, email })
     .eq("id", userId)
     .select()
     .single();

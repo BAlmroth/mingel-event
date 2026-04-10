@@ -61,6 +61,7 @@ router.get("/callback", async (req, res) => {
       first_name: profileData.given_name,
       last_name: profileData.family_name,
       picture: profileData.picture,
+      email: profileData.email,
     };
 
     const { data, error } = await supabase
