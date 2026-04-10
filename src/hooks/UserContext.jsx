@@ -78,6 +78,15 @@ export function UserProvider({ children }) {
     if (!error) setLikedIds((prev) => prev.filter((id) => id !== likedId));
   };
 
+  const logOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if(!error) {
+      setUser(null);
+      setAllUsers([]);
+      setLikedIds([]);
+    }
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -88,6 +97,7 @@ export function UserProvider({ children }) {
         unlikeUser,
         loading,
         updateUser,
+        logOut,
       }}
     >
       {children}

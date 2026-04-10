@@ -8,7 +8,7 @@ import Star from "../../assets/Star.svg";
 import Edit from "../../assets/Edit.svg";
 
 export function MyProfile() {
-  const { user, loading, allUsers, likedIds = [], unlikeUser } = useUser();
+  const { user, loading, allUsers, likedIds = [], unlikeUser, logOut } = useUser();
   const navigate = useNavigate();
 
   const getInitials = (name) => {
