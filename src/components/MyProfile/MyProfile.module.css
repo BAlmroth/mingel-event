@@ -52,3 +52,29 @@
     flex-direction: column;
     gap: 0.5rem;
 }
+
+.avatarImage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.avatarInitials {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--text-h);
+}

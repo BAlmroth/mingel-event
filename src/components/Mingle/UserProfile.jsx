@@ -3,6 +3,7 @@ import { useUser } from "../../hooks/UserContext";
 import Styles from "./UserProfile.module.css";
 import Star from "../../assets/Star.svg";
 import BackArrow from "../../assets/BackArrow.svg";
+import { getInitials } from "../../utils/helpers";
 
 export function UserProfile() {
   const {
@@ -17,15 +18,6 @@ export function UserProfile() {
 
   const user = allUsers?.find((u) => u.username === username);
   const isLiked = likedIds.includes(user?.id);
-
-  const getInitials = (name) => {
-    if (!name) return "";
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase();
-  };
 
   if (loading) return <p>Loading...</p>;
   if (!user && !loading) return <p>Person not found</p>;
@@ -51,7 +43,9 @@ export function UserProfile() {
             }}
           />
         ) : (
-          getInitials(`${user.first_name} ${user.last_name}`)
+          <div className="initials">
+            {getInitials(user.first_name, user.last_name)}
+          </div>
         )}
         <h2>
           {user.first_name} {user.last_name}

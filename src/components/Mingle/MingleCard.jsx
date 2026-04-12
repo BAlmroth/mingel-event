@@ -1,9 +1,6 @@
 import Styles from "./MingleFeed.module.css";
 import { useNavigate } from "react-router-dom";
-
-const getInitials = (firstName, lastName) => { //lägg i egen component då den används flera gånger
-  return `${firstName?.[0] ?? ""}${lastName?.[0] ?? ""}`.toUpperCase();
-};
+import { getInitials } from "../../utils/helpers";
 
 export function MingleCard({ user }) {
   const navigate = useNavigate();
@@ -26,7 +23,9 @@ export function MingleCard({ user }) {
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           ) : (
-            getInitials(user.first_name, user.last_name)
+            <div className="initials">
+  {getInitials(user.first_name, user.last_name)}
+</div>
           )}
         </div>
         <div className={Styles.profileText}>

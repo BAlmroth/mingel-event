@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
+import { getInitials } from "../../utils/helpers";
 
 export function CreateProfile() {
   const role = localStorage.getItem("role");
@@ -50,12 +51,18 @@ export function CreateProfile() {
   return (
     <section>
       <PageHeader />
-      {image && (
+      {image ? (
         <img
           src={image}
           alt="Profile picture"
           style={{ width: "150px", borderRadius: "50%" }}
         />
+      ) : (
+        name && (
+          <div className="initials">
+            {getInitials(user.first_name, user.last_name)}
+          </div>
+        )
       )}
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>

@@ -1,25 +1,22 @@
 import { useUser } from "../../hooks/UserContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { LikedCard } from "../Mingle/LikedCard";
-import supabase from "../../lib/supabaseClient";
 import styles from "./MyProfile.module.css";
-import Star from "../../assets/Star.svg"; // går det att kombinera dessa till en rad?
-import Edit from "../../assets/Edit.svg"; // går det att kombinera dessa till en rad?
-import search from "../../assets/search.svg"
+import Star from "../../assets/Star.svg";
+import Edit from "../../assets/Edit.svg";
+import search from "../../assets/search.svg";
+import { getInitials } from "../../utils/helpers";
 
 export function MyProfile() {
-  const { user, loading, allUsers, likedIds = [], unlikeUser, logOut } = useUser();
+  const {
+    user,
+    loading,
+    allUsers,
+    likedIds = [],
+    unlikeUser,
+    logOut,
+  } = useUser();
   const navigate = useNavigate();
-
-  const getInitials = (name) => {
-    if (!name) return "";
-    return name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase();
-  };
 
   const handleLogout = async () => {
     await logOut();
@@ -43,28 +40,25 @@ export function MyProfile() {
           >
             <img src={Edit} alt="Edit profile" />
           </button>
-          <button
-              className={styles.editBtn}
-              onClick={handleLogout}
-            >
-              <img src={search} alt="Logout" />
-            </button>
+          <button className={styles.editBtn} onClick={handleLogout}>
+            <img src={search} alt="Logout" />
+          </button>
         </div>
       </div>
       <div className={styles.avatar}>
-        {user.picture ? (
-          <img
-            src={user.picture}
-            alt="profile"
-            style={{
-              width: "150px",
-              borderRadius: "50%",
-              marginBottom: "1.5rem",
-            }}
-          />
-        ) : (
-          getInitials(`${user.first_name} ${user.last_name}`)
-        )}
+        <div className={styles.avatarWrapper}>
+          {user.picture ? (
+            <img
+              src={user.picture}
+              alt="profile"
+              className={styles.avatarImage}
+            />
+          ) : (
+            <div className={styles.avatarInitials}>
+              {getInitials(user.first_name, user.last_name)}
+            </div>
+          )}
+        </div>
         <h2>
           {user.first_name} {user.last_name}
         </h2>
@@ -82,11 +76,11 @@ export function MyProfile() {
         <img src={Star} alt="stalk" className={styles.stalkBtn} />
         <h3>Stalking for later</h3>
       </div>
-        <div className={styles.stalkedFeed}>
-          {likedProfiles.map((p) => (
-            <LikedCard key={p.id} user={p} />
-          ))}
-        </div>
+      <div className={styles.stalkedFeed}>
+        {likedProfiles.map((p) => (
+          <LikedCard key={p.id} user={p} />
+        ))}
+      </div>
     </section>
   );
 }
