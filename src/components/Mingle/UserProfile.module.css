@@ -16,14 +16,30 @@
 .avatar {
     padding: 1.5rem;
     border: 1px solid var(--border);
-    margin: 3rem 0;
+    margin: 2rem 0;
     border-radius: 1rem;
 }
 
-.funFact {
-    padding: 2rem;
+.funFact{
+    padding: 1rem;
+    background-color: var(--input-bg);
+    margin: 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+}
+.funFact h5{
+    margin-top: 0.5rem;
+    color: var(--text-h);
 }
 
+
+.email {
+padding: 1rem;
+}
+
+.email h5 {
+    color: var(--text-h);
+}
 .stalkLater {
     display: flex;
     justify-content: center;
@@ -56,3 +72,10 @@
 }
 
 
+.smallText {
+  text-align: left;
+  color: var(--text-smaller);
+  font-size: 0.9rem;
+  margin: 1rem 0.5rem;
+  font-weight: 500;
+}

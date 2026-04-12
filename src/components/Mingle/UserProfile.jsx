@@ -39,6 +39,7 @@ export function UserProfile() {
       <h2 className={Styles.userInfo}>
         {user.first_name} {user.last_name}
       </h2>
+      <p className={Styles.smallText}>Ask {user.first_name} about their funfact!</p>
       <div className={Styles.avatar}>
         {user.picture ? (
           <img
@@ -59,11 +60,17 @@ export function UserProfile() {
         <p>
           {user.role} • {user.description}
         </p>
-        <h4>Email</h4>
-        <h5>{user.email}</h5>
+        <div className={Styles.email}>
+          <h5>Email:</h5>
+          <p>{user.email}</p>
+        </div>
+
         <div className={Styles.funFact}>
-          <h4>MY FUN FACT:</h4>
+          <h5>MY FUN FACT:</h5>
           <p>{user.fun_fact}</p>
+
+
+
         </div>
       </div>
       {/* only show if logge in and not looking at your own profile */}

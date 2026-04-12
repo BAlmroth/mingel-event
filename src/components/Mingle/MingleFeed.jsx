@@ -82,7 +82,7 @@ export function MingleFeed() {
             {filtered.map((person) => (
               <MingleCard key={person.id} user={person} />
             ))}
-            <small>{filtered.length} people in the room</small>
+            <small>{allUsers.length} people in the room</small>
           </>
         )}
       </section>
