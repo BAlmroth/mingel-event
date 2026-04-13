@@ -67,8 +67,8 @@ export function CreateProfile() {
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         {!name && (
-          <button type="button" onClick={handleLinkedInLogin}>
-            Log in with LinkedIn
+          <button type="button" className={Styles.linkedinBtn} onClick={handleLinkedInLogin}>
+            Sign in with LinkedIn
           </button>
         )}
 

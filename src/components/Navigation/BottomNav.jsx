@@ -10,10 +10,12 @@ export function BottomNav() {
     const location = useLocation()
     const { user, loading } = useUser()
 
+    const isActive = (path) => location.pathname === path ? styles.active : ""
+
     return (
         <nav className={styles.nav}>
         <div
-          className={location.pathname === "/feed" ? styles.active : ""}
+          className={isActive("/feed")}
           onClick={() => navigate("/feed")}
         >
           <img src={searchImg} alt="mingle feed" className={styles.icon} />
@@ -33,7 +35,7 @@ export function BottomNav() {
       )}   
     
         <div
-          className={location.pathname === "/profile" ? styles.active : ""}
+          className={isActive("/profile")}
           onClick={() => navigate("/profile")}
         >
           <img src={stalkerBtn} alt="my profile" className={styles.icon} />
@@ -42,4 +44,3 @@ export function BottomNav() {
       </nav>
     )
 }
-
