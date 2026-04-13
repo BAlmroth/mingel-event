@@ -87,7 +87,6 @@ export function UserProvider({ children }) {
       credentials: "include",
     });
     setUser(null);
-    setAllUsers([]);
     setLikedIds([]);
   };
 
