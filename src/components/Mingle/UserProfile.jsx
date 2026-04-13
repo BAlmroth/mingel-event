@@ -39,11 +39,7 @@ export function UserProfile() {
             <img
               src={user.picture}
               alt="profile"
-              style={{
-                width: "150px",
-                borderRadius: "50%",
-                marginBottom: "1.5rem",
-              }}
+              className={Styles.profileImage}
             />
           ) : (
             <div className={`${Styles.avatarInitials} ${user.role}`}>
@@ -74,8 +70,7 @@ export function UserProfile() {
           <img
             src={Star}
             alt="stalk"
-            className={Styles.stalkStar}
-            style={{ opacity: isLiked ? 1 : 0.3 }}
+            className={`${Styles.stalkStar} ${isLiked ? Styles.stalkStarActive : Styles.stalkStarInactive}`}
           />
           <button className={Styles.stalkBtn} type="button">
             {isLiked ? "Stalking!" : "Stalk for later"}

@@ -73,7 +73,7 @@ export function CreateProfile() {
         <img
           src={image}
           alt="Profile picture"
-          style={{ width: "150px", borderRadius: "50%" }}
+          className={Styles.profileImage}
         />
       ) : (
         name && (
@@ -85,65 +85,76 @@ export function CreateProfile() {
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         {!name && (
-        <>
-          <button
-            type="button"
-            className={Styles.linkedinBtn}
-            onClick={handleLinkedInLogin}
-          >
-            <img src={linkedIn} alt="linkedIn logo" />
-            Sign in with LinkedIn
-          </button>
-          <p>Sign in with LinkedIn to create your profile to connect with (stalk) the people at the event!</p>
+          <>
+            <button
+              type="button"
+              className={Styles.linkedinBtn}
+              onClick={handleLinkedInLogin}
+            >
+              <img src={linkedIn} alt="linkedIn logo" />
+              Sign in with LinkedIn
+            </button>
+            <p>
+              Sign in with LinkedIn to create your profile to connect with
+              (stalk) the people at the event!
+            </p>
           </>
         )}
 
         {name && (
           <>
-          <div className={Styles.greeting}>
-            <label>Welcome,</label>
-            <p>{name}</p>
-          </div>
+            <div className={Styles.greeting}>
+              <label>Welcome,</label>
+              <p>{name}</p>
+            </div>
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          value={email}
-          type="email"
-          placeholder="your emailadress"
-          onChange={(e) => setEmail(e.target.value)}
-          />
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              value={email}
+              type="email"
+              placeholder="your emailadress"
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-        <label htmlFor="company">{isStudent ? "Program" : "Company"} <sup>*</sup></label>
-        <input
-          id="company"
-          name={isStudent ? "program" : "company"}
-          value={description}
-          type="text"
-          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
-          onChange={(e) => {
-            setDescription(e.target.value);
-            clearError("description");
-          }}
-        />
-        {errors.description && <p className="error">{errors.description}</p>}
+            <label htmlFor="company">
+              {isStudent ? "Program" : "Company"} <sup>*</sup>
+            </label>
+            <input
+              id="company"
+              name={isStudent ? "program" : "company"}
+              value={description}
+              type="text"
+              placeholder={
+                isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
+              }
+              onChange={(e) => {
+                setDescription(e.target.value);
+                clearError("description");
+              }}
+            />
+            {errors.description && (
+              <p className="error">{errors.description}</p>
+            )}
 
-        <label htmlFor="funfact">Fun fact <sup>*</sup></label>
-        <input
-          id="fun_fact"
-          value={fun_fact}
-          type="text"
-          placeholder="e.g. Ask me about my favorite superhero"
-          onChange={(e) => {
-            setFunfact(e.target.value);
-            clearError("fun_fact");
-          }}
-        />
-        {errors.fun_fact && <p className="error">{errors.fun_fact}</p>}
+            <label htmlFor="funfact">
+              Fun fact <sup>*</sup>
+            </label>
+            <input
+              id="fun_fact"
+              value={fun_fact}
+              type="text"
+              placeholder="e.g. Ask me about my favorite superhero"
+              onChange={(e) => {
+                setFunfact(e.target.value);
+                clearError("fun_fact");
+              }}
+            />
+            {errors.fun_fact && <p className="error">{errors.fun_fact}</p>}
 
-        <button type="submit">Start the stalking</button>
-        </>
-      )}
+            <button type="submit">Start the stalking</button>
+          </>
+        )}
       </form>
     </section>
   );

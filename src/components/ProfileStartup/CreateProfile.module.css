@@ -34,3 +34,8 @@
   gap: 1rem;
   padding: 0.8rem 1rem;
 }
+
+.profileImage {
+  width: 150px;
+  border-radius: 50%;
+}

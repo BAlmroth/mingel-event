@@ -19,14 +19,20 @@
   border-radius: 1rem;
 }
 .avatar h4 {
-    margin-bottom: 0.5rem;
-    color: var(--text-h);
+  margin-bottom: 0.5rem;
+  color: var(--text-h);
 }
 
 .avatarWrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+.profileImage {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
 }
 
 .avatarInitials {
@@ -48,8 +54,8 @@
   border-radius: 1rem;
   border: 1px solid var(--border);
 }
-.funFact h4{
-    margin: 0 0 0.5rem;
+.funFact h4 {
+  margin: 0 0 0.5rem;
 }
 
 .stalkLater {
@@ -62,6 +68,14 @@
 
 .stalkLater img {
   margin-right: 1rem;
+}
+
+.stalkStarActive {
+  opacity: 1;
+}
+
+.stalkStarInactive {
+  opacity: 0.3;
 }
 
 .stalkBtn {
