@@ -6,25 +6,25 @@ export function MingleCard({ user }) {
   const navigate = useNavigate();
 
   return (
-    <div
+      <div
       onClick={() => navigate(`/profiles/${user.username}`)}
       className={Styles.profileCard}
     >
       <div className={Styles.leftField}>
-<div className={Styles.imageWrapper}>
+      <div className={Styles.imageWrapper}>
           {user.picture ? (
             <img
               src={user.picture}
               alt="profile"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              className={Styles.profileImg}
             />
           ) : (
             <div className={`initials ${user.role}`}>
               {getInitials(user.first_name, user.last_name)}
             </div>
           )}
-        </div>
-        <div className={Styles.profileText}>
+       </div>
+      <div className={Styles.profileText}>
           <h5>
             {user.first_name} {user.last_name}
           </h5>
