@@ -36,7 +36,7 @@ export function MyProfile() {
       <div className={styles.profileheader}>
         <h5>YOUR PROFILE</h5>
         <div className={styles.titleRow}>
-          <h1>Stalk me!</h1>
+          <h1>Personal Card</h1>
           <button
             className={styles.editBtn}
             onClick={() => navigate("/profile/edit")}
@@ -47,6 +47,7 @@ export function MyProfile() {
             <img src={logout} alt="Logout" />
           </button>
         </div>
+        <p className="subTitle">Wihoo! now people can stalk you, and you them...</p>
       </div>
       <div className={styles.avatar}>
         <div className={styles.avatarWrapper}>

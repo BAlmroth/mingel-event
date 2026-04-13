@@ -40,7 +40,7 @@ export function MingleFeed() {
             <span className={Styles.dot}></span>
             <p>Live Room</p>
           </div>
-          <h2>Mingle Feed</h2>
+          <h2>Mingle Feed.</h2>
         </div>
 
         {/* search */}

@@ -11,7 +11,7 @@
 .titleRow {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   gap: 1rem;
 }
@@ -25,7 +25,7 @@
 .avatar {
   padding: 1.5rem;
   border: 1px solid var(--border);
-  margin: 3rem 0;
+  margin: 2rem 0;
   border-radius: 1rem;
 }
 

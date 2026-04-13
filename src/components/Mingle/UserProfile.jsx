@@ -32,6 +32,7 @@ export function UserProfile() {
       <h2 className={Styles.userInfo}>
         {user.first_name} {user.last_name}
       </h2>
+      <p className="subTitle">Ask {user.first_name} about their fun fact!</p>
       <div className={Styles.avatar}>
         <div className={Styles.avatarWrapper}>
           {user.picture ? (

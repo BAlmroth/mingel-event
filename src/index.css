@@ -142,3 +142,11 @@ input {
   font-size: 1rem;
   text-align: left;
 }
+
+.subTitle {
+  font-size: 15px;
+  font-weight: var(--thin-weight);
+  margin: 1rem 0 0;
+  max-width: 70%;
+  text-align: start;
+}
