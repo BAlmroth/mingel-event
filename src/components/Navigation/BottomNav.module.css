@@ -1,39 +1,38 @@
 .nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    background: black;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid #BDBDBD;   
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #bdbdbd;
 }
-  
+
 .joinBtn {
-    position: absolute;
-    top: -45px;
-    display: flex;
-    align-items: center;
+  position: absolute;
+  top: -45px;
+  display: flex;
+  align-items: center;
 }
 
 .joinWrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .joinSvg {
-    position: absolute;
-    top: -65px;
-    width: 60px;
-    height: 60px;
+  position: absolute;
+  top: -65px;
+  width: 60px;
+  height: 60px;
 }
 
 .joinText {
-  font-weight: var(--thin-weight);
   color: var(--text-h);
   font-weight: var(--regular-weight);
 }
@@ -53,7 +52,8 @@
 }
 
 .active .icon {
-  filter: brightness(0) saturate(100%) invert(22%) sepia(93%) saturate(7471%) hue-rotate(346deg) brightness(91%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(22%) sepia(93%) saturate(7471%)
+    hue-rotate(346deg) brightness(91%) contrast(101%);
 }
 
 .active p {
@@ -64,6 +64,3 @@
   margin-top: 0.3rem;
   font-size: 1rem;
 }
-
-
-  

@@ -25,7 +25,7 @@ export function UserProfile() {
 
   return (
     <section>
-      <Link to="/feed" className={Styles.backButton}>
+      <Link to="/feed" className={`backLink ${Styles.backButton}`}>
         <img src={BackArrow} alt="back arrow" />
         Back
       </Link>
@@ -63,12 +63,12 @@ export function UserProfile() {
           <p>{user.fun_fact}</p>
         </div>
       </div>
-      
+
       {/* only show if logge in and not looking at your own profile */}
       {loggedInUser && loggedInUser.username !== username && (
         <div
           className={Styles.stalkLater}
-          onClick={() => (isLiked ? unlikeUser(user.id) : likeUser(user.id))} 
+          onClick={() => (isLiked ? unlikeUser(user.id) : likeUser(user.id))}
         >
           <img
             src={Star}

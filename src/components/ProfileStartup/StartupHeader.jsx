@@ -14,7 +14,7 @@ export function PageHeader() {
       {isFirst ? (
         <p className={styles.headerp}>I AM A...</p>
       ) : (
-        <Link to="/" className={styles.backButton}>
+        <Link to="/" className={`backLink ${styles.backButton}`}>
           <img src={BackArrow} alt="back arrow" />
           Back
         </Link>

@@ -1,5 +1,5 @@
 .editSection {
-    margin: 3rem 0;
+  margin: 3rem 0;
 }
 
 .card {
@@ -22,6 +22,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.form label {
+  text-align: left;
+  display: block;
 }
 
 .label {
@@ -83,13 +88,13 @@
 }
 
 .backButton {
-    color: var(--text-small);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    font-weight: var(--regular-weight);
-    margin-bottom: 2rem;
-    font-size: 20px;
-    font-weight: var(--thin-weight);
+  color: var(--text-small);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: var(--regular-weight);
+  margin-bottom: 2rem;
+  font-size: 20px;
+  font-weight: var(--thin-weight);
 }
