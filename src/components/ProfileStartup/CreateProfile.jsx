@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
 import { getInitials } from "../../utils/helpers";
+import linkedIn from "../../assets/linkedIn.svg";
 import { useFormValidation } from "../../hooks/FormValidation";
 
 export function CreateProfile() {
@@ -80,17 +81,25 @@ export function CreateProfile() {
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         {!name && (
-          <button type="button" className={Styles.linkedinBtn} onClick={handleLinkedInLogin}>
+        <>
+          <button
+            type="button"
+            className={Styles.linkedinBtn}
+            onClick={handleLinkedInLogin}
+          >
+            <img src={linkedIn} alt="linkedIn logo" />
             Sign in with LinkedIn
           </button>
+          <p>Sign in with LinkedIn to create your profile to connect with (stalk) the people at the event!</p>
+          </>
         )}
 
         {name && (
+          <>
           <div className={Styles.greeting}>
             <label>Welcome,</label>
             <p>{name}</p>
           </div>
-        )}
 
         <label htmlFor="email">Email</label>
         <input
@@ -99,7 +108,7 @@ export function CreateProfile() {
           type="email"
           placeholder="your emailadress"
           onChange={(e) => setEmail(e.target.value)}
-        />
+          />
 
         <label htmlFor="company">{isStudent ? "Program" : "Company"} <sup>*</sup></label>
         <input
@@ -129,6 +138,8 @@ export function CreateProfile() {
         {errors.fun_fact && <p className="error">{errors.fun_fact}</p>}
 
         <button type="submit">Start the stalking</button>
+        </>
+      )}
       </form>
     </section>
   );
