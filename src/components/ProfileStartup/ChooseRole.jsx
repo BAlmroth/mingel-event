@@ -11,7 +11,6 @@ export function ChooseRole() {
     <>
       <section>
         <PageHeader />
-
         <RoleCard
           src={StudentImg}
           alt="student logo"

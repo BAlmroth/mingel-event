@@ -11,8 +11,10 @@ export function MingleFeed() {
   const [active, setActive] = useState("All");
   const [search, setSearch] = useState("");
 
+  // map filter names to database role values
   const roleMap = { Students: "student", Industry: "industry" };
 
+  // filter users by role and search query
   const filtered = allUsers
     .filter((user) => {
       if (active === "All") return true;

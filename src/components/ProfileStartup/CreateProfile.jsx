@@ -9,6 +9,7 @@ export function CreateProfile() {
   const role = localStorage.getItem("role");
   const isStudent = role === "student";
 
+  // form input states
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -18,6 +19,7 @@ export function CreateProfile() {
 
   const { errors, validateForm, clearError } = useFormValidation();
 
+  // fetch user data from LinkedIn
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/me`, { credentials: "include" })
       .then((res) => (res.ok ? res.json() : null))
@@ -37,6 +39,7 @@ export function CreateProfile() {
       });
   }, []);
 
+  // handle form submission with validation
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,6 +59,7 @@ export function CreateProfile() {
     }
   };
 
+  // redirect to LinkedIn login
   const handleLinkedInLogin = () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/auth/linkedin/login`;
   };

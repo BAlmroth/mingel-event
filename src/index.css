@@ -1,5 +1,4 @@
 :root {
-  /* --text: #6b6375; */
   --text-h: #FFFFFF;
   --text-small: #BFBFBF;
   
@@ -16,13 +15,8 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  /* color-scheme: light dark; */
   color: var(--text-h);
   background: var(--bg);
-  /* font-synthesis: none; */
-  /* text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
   padding: 1rem;
 
   @media (max-width: 1024px) {
@@ -36,27 +30,6 @@
   box-sizing: border-box;
 }
 
-/*
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-     --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  /* #social .button-icon {
-    filter: invert(1) brightness(2);
-  } 
-}*/
-
 body {
   margin: 0;
   padding-bottom: 5rem;
@@ -67,7 +40,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  /* border-inline: 1px solid var(--border); */
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -83,19 +55,12 @@ h2 {
 
 h1 {
   font-size: 40px;
-  /* @media (max-width: 1024px) {
-    font-size: 36px;
-  } */
 }
 
 h2 {
   font-size: 32px;
-
   letter-spacing: 0.0703px;
   margin: 0 0 8px;
-  /* @media (max-width: 1024px) {
-    font-size: 20px;
-  } */
 }
 
 h3 {
@@ -122,24 +87,24 @@ small {
 }
 
 button {
-    padding: 1.2rem 0.5rem;
-    margin-top: 1rem;
-    border-radius: 1rem;
-    background-color: var(--accent);
-    color: #FFFF;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: 0.0703px;
-    border: none;
-    font-family: var(--sans);
+  padding: 1.2rem 0.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  background-color: var(--accent);
+  color: #FFFF;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.0703px;
+  border: none;
+  font-family: var(--sans);
 }
 
 input {
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 2px solid var(--border); 
-    background-color: var(--input-bg);
-    color: var(--text-h);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid var(--border); 
+  background-color: var(--input-bg);
+  color: var(--text-h);
 }
 
 .initials {

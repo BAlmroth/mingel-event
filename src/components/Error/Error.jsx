@@ -6,6 +6,7 @@ export function Error() {
   const navigate = useNavigate();
   const location = useLocation();
   
+  // determine if 404 or 500 error based on current path
   const isNotFound = location.pathname !== "/error";
   
   return (

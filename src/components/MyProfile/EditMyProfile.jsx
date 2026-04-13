@@ -11,6 +11,7 @@ export function EditMyProfile() {
   const role = localStorage.getItem("role");
   const isStudent = role === "student";
 
+  // form input states
   const [email, setEmail] = useState(user?.email || "");
   const [description, setDescription] = useState(user?.description || "");
   const [funFact, setFunFact] = useState(user?.fun_fact || "");
@@ -18,6 +19,7 @@ export function EditMyProfile() {
   
   const { errors, validateForm, clearError } = useFormValidation();
 
+  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     

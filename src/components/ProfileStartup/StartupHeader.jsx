@@ -1,6 +1,7 @@
 import styles from "./StartupHeader.module.css";
 import { useLocation, Link } from "react-router-dom";
 import BackArrow from "../../assets/BackArrow.svg";
+
 export function PageHeader() {
   const location = useLocation();
   const isFirst = location.pathname === "/";

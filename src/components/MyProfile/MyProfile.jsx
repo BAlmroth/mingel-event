@@ -18,6 +18,7 @@ export function MyProfile() {
   } = useUser();
   const navigate = useNavigate();
 
+  // handle user logout
   const handleLogout = async () => {
     await logOut();
     navigate("/");
@@ -26,6 +27,7 @@ export function MyProfile() {
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>Not logged in</p>;
 
+  // filter users that current user has liked
   const likedProfiles = allUsers.filter((u) => likedIds.includes(u.id));
 
   return (
@@ -59,23 +61,23 @@ export function MyProfile() {
             </div>
           )}
         </div>
-        <h2>
-          {user.first_name} {user.last_name}
-        </h2>
-        <p>
-          {user.role} • {user.description}
-        </p>
-        <h4>Email</h4>
-        <h5>{user.email}</h5>
-        <div className={styles.funFact}>
-          <h4>MY FUN FACT:</h4>
-          <p>{user.fun_fact}</p>
+          <h2>
+            {user.first_name} {user.last_name}
+          </h2>
+          <p>
+            {user.role} • {user.description}
+          </p>
+          <h4>Email</h4>
+          <h5>{user.email}</h5>
+            <div className={styles.funFact}>
+              <h4>MY FUN FACT:</h4>
+              <p>{user.fun_fact}</p>
+            </div>
         </div>
-      </div>
-      <div className={styles.stalkLater}>
-        <img src={Star} alt="stalk" className={styles.stalkBtn} />
-        <h3>Stalking for later</h3>
-      </div>
+        <div className={styles.stalkLater}>
+          <img src={Star} alt="stalk" className={styles.stalkBtn} />
+          <h3>Stalking for later</h3>
+        </div>
       <div className={styles.stalkedFeed}>
         {likedProfiles.map((p) => (
           <LikedCard key={p.id} user={p} />

@@ -9,7 +9,7 @@ export function UserProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [likedIds, setLikedIds] = useState([]);
 
-  //fetch all
+  // fetch all
   useEffect(() => {
     const fetchData = async () => {
       const { data: allData, error: allError } = await supabase
@@ -18,7 +18,7 @@ export function UserProvider({ children }) {
 
       if (!allError) setAllUsers(allData);
 
-      //fetch your info on login
+      // fetch your info on login
       const res = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
         credentials: "include",
       });
@@ -36,9 +36,11 @@ export function UserProvider({ children }) {
         .maybeSingle();
 
       if (!error && data) {
-        setUser(data); //spara info om inloggad person
-
-        const { data: likesData } = await supabase //hämta profilens liked profiles
+        // safe info while logged in
+        setUser(data); 
+        
+        // fetch the users liked profiles
+        const { data: likesData } = await supabase 
           .from("likes")
           .select("liked_id")
           .eq("liker_id", data.id);
@@ -51,6 +53,7 @@ export function UserProvider({ children }) {
     fetchData();
   }, []);
 
+  // update profile
   const updateUser = (updatedData) => {
     setUser((prev) => ({ ...prev, ...updatedData }));
     setAllUsers((prev) =>
@@ -58,7 +61,7 @@ export function UserProvider({ children }) {
     );
   };
 
-  //like profile
+  // like profile
   const likeUser = async (likedId) => {
     if (!user) return;
     const { error } = await supabase
@@ -67,7 +70,7 @@ export function UserProvider({ children }) {
     if (!error) setLikedIds((prev) => [...prev, likedId]);
   };
 
-  //unlike
+  // unlike profile
   const unlikeUser = async (likedId) => {
     if (!user) return;
     const { error } = await supabase

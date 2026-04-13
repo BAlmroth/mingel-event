@@ -16,6 +16,7 @@ export function UserProfile() {
   } = useUser();
   const { username } = useParams();
 
+  // find user by username
   const user = allUsers?.find((u) => u.username === username);
   const isLiked = likedIds.includes(user?.id);
 
@@ -62,11 +63,12 @@ export function UserProfile() {
           <p>{user.fun_fact}</p>
         </div>
       </div>
+      
       {/* only show if logge in and not looking at your own profile */}
       {loggedInUser && loggedInUser.username !== username && (
         <div
           className={Styles.stalkLater}
-          onClick={() => (isLiked ? unlikeUser(user.id) : likeUser(user.id))} //add or unadd user from db table likes
+          onClick={() => (isLiked ? unlikeUser(user.id) : likeUser(user.id))} 
         >
           <img
             src={Star}
