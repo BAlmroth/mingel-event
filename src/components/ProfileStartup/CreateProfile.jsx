@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
 import { getInitials } from "../../utils/helpers";
+import linkedIn from "../../assets/linkedIn.svg";
 
 export function CreateProfile() {
   const role = localStorage.getItem("role");
@@ -68,6 +69,7 @@ export function CreateProfile() {
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         {!name && (
           <button type="button" className={Styles.linkedinBtn} onClick={handleLinkedInLogin}>
+           <img src={linkedIn} alt="linkedIn logo" />
             Sign in with LinkedIn
           </button>
         )}

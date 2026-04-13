@@ -37,6 +37,11 @@ label {
 .linkedinBtn {
     background-color: #007AB6;
     margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
 }
 
 
