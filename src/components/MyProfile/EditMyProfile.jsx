@@ -12,9 +12,29 @@ export function EditMyProfile() {
   const [description, setDescription] = useState(user?.description || "");
   const [funFact, setFunFact] = useState(user?.fun_fact || "");
   const [saving, setSaving] = useState(false);
+  
+  // Error states
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!description.trim()) {
+      newErrors.description = "Please fill in this field";
+    }
+    if (!funFact.trim()) {
+      newErrors.funFact = "Please fill in this field";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     setSaving(true);
 
     const { data, error } = await supabase
@@ -56,25 +76,40 @@ export function EditMyProfile() {
             placeholder="email@gmail.com"
             className={styles.input}
           />
+          
           <label className={styles.label}>Program</label>
           <input
             type="text"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+              if (errors.description) {
+                setErrors({ ...errors, description: "" });
+              }
+            }}
             placeholder="e.g. Digital Design at Yrgo"
-            required
             className={styles.input}
           />
+          {errors.description && (
+            <p className={styles.error}>{errors.description}</p>
+          )}
 
           <label className={styles.label}>Fun Fact</label>
           <input
             type="text"
             value={funFact}
-            onChange={(e) => setFunFact(e.target.value)}
+            onChange={(e) => {
+              setFunFact(e.target.value);
+              if (errors.funFact) {
+                setErrors({ ...errors, funFact: "" });
+              }
+            }}
             placeholder="A icebreaker to talk about"
-            required
             className={styles.input}
           />
+          {errors.funFact && (
+            <p className={styles.error}>{errors.funFact}</p>
+          )}
 
           <div className={styles.buttons}>
             <button 

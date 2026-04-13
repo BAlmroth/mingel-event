@@ -100,3 +100,9 @@
     font-size: 20px;
     font-weight: var(--thin-weight);
 }
+
+.error {
+  color: #E51236;
+  font-size: 1rem;
+  
+}
