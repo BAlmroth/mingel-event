@@ -74,6 +74,34 @@
   border-radius: 1rem;
 }
 
+.imageWrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 1rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (max-width: 400px) {
+  .imageWrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profileCard {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .profileText h5 {
+    font-size: 15px;
+  }
+
+  .profileText p {
+    font-size: 13px;
+  }
+}
+
 .role {
   background-color: var(--accent);
   font-weight: var(--regular-weight);
@@ -81,9 +109,30 @@
   padding: 0.5rem 1rem;
   border-radius: 2rem;
 }
-.profileText {
-    text-align: start;
+
+.roleFull {
+  display: inline;
 }
+
+.roleShort {
+  display: none;
+}
+
+@media (max-width: 350px) {
+  .roleFull {
+    display: none;
+  }
+  .roleShort {
+    display: inline;
+  }
+}
+
+.profileText {
+  text-align: start;
+  flex: 1;
+  min-width: 0;
+}
+
 .profileText h5 {
   font-weight: 700;
   color: var(--text-h);

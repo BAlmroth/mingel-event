@@ -68,18 +68,25 @@ export function CreateProfile() {
 
       <form className={Styles.inputInfo} onSubmit={handleSubmit}>
         {!name && (
-          <button type="button" className={Styles.linkedinBtn} onClick={handleLinkedInLogin}>
-           <img src={linkedIn} alt="linkedIn logo" />
+        <>
+          <button
+            type="button"
+            className={Styles.linkedinBtn}
+            onClick={handleLinkedInLogin}
+          >
+            <img src={linkedIn} alt="linkedIn logo" />
             Sign in with LinkedIn
           </button>
+          <p>Sign in with LinkedIn to create your profile to connect with (stalk) the people at the event!</p>
+          </>
         )}
 
         {name && (
+          <>
           <div className={Styles.greeting}>
             <label>Welcome,</label>
             <p>{name}</p>
           </div>
-        )}
 
         <label htmlFor="email">Email</label>
         <input
@@ -88,7 +95,7 @@ export function CreateProfile() {
           type="email"
           placeholder="your emailadress"
           onChange={(e) => setEmail(e.target.value)}
-        />
+          />
 
         <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
         <input
@@ -100,7 +107,7 @@ export function CreateProfile() {
             isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
           }
           onChange={(e) => setDescription(e.target.value)}
-        />
+          />
 
         <label htmlFor="funfact">Fun fact</label>
         <input
@@ -109,8 +116,10 @@ export function CreateProfile() {
           type="text"
           placeholder="e.g. Ask me about my favorite superhero"
           onChange={(e) => setFunfact(e.target.value)}
-        />
+          />
         <button type="submit">Start the stalking</button>
+        </>
+      )}
       </form>
     </section>
   );
