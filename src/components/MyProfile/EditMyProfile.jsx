@@ -62,6 +62,7 @@ export function EditMyProfile() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="e.g. Digital Design at Yrgo"
+            required
             className={styles.input}
           />
 
@@ -71,6 +72,7 @@ export function EditMyProfile() {
             value={funFact}
             onChange={(e) => setFunFact(e.target.value)}
             placeholder="A icebreaker to talk about"
+            required
             className={styles.input}
           />
 
