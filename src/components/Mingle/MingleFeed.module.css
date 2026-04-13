@@ -18,6 +18,13 @@
   font-size: 2rem;
   margin: 0 0 1.5rem;
 }
+
+.MingleFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
 .dot {
   display: inline-block;
   background-color: var(--accent);
@@ -69,7 +76,8 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: nowrap;
-  margin: 1rem 0;
+  background-color: var(--input-bg);
+  margin: 0;
   padding: 1rem;
   border: 1px solid var(--border);
   border-radius: 1rem;

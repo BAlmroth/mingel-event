@@ -81,7 +81,7 @@ export function MingleFeed() {
               <MingleCard key={person.id} user={person} />
             ))}
             <small className={Styles.count}>
-              {filtered.length} people in the room
+              {filtered.length} in the room
             </small>
           </>
         )}

@@ -6,6 +6,7 @@ import Star from "../../assets/Star.svg";
 import Edit from "../../assets/Edit.svg";
 import logout from "../../assets/logout.svg";
 import { getInitials } from "../../utils/helpers";
+import { MingleCard } from "../Mingle/MingleCard";
 
 export function MyProfile() {
   const {
@@ -67,7 +68,7 @@ export function MyProfile() {
           <p>
             {user.role} • {user.description}
           </p>
-          <h4>Email</h4>
+          <h4>Email:</h4>
           <h5>{user.email}</h5>
             <div className={styles.funFact}>
               <h4>MY FUN FACT:</h4>
@@ -80,7 +81,7 @@ export function MyProfile() {
         </div>
       <div className={styles.stalkedFeed}>
         {likedProfiles.map((p) => (
-          <LikedCard key={p.id} user={p} />
+          <MingleCard key={p.id} user={p} />
         ))}
       </div>
     </section>
