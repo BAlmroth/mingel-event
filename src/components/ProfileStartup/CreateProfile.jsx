@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Styles from "./CreateProfile.module.css";
 import { PageHeader } from "./StartupHeader";
 import { getInitials } from "../../utils/helpers";
+import { useFormValidation } from "../../hooks/FormValidation";
 
 export function CreateProfile() {
   const role = localStorage.getItem("role");
@@ -12,6 +13,9 @@ export function CreateProfile() {
   const [description, setDescription] = useState("");
   const [fun_fact, setFunfact] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  const { errors, validateForm, clearError } = useFormValidation();
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/me`, { credentials: "include" })
@@ -19,23 +23,31 @@ export function CreateProfile() {
       .then((data) => {
         if (data) {
           setName(`${data.first_name} ${data.last_name}`);
-          setImage(data.picture);
+          setImage(data.picture || "");
           if (data.description) setDescription(data.description);
           if (data.fun_fact) setFunfact(data.fun_fact);
           if (data.email) setEmail(data.email);
         }
+        setLoading(false);
       })
-      .catch((err) => console.error("Fetch /me failed:", err));
+      .catch((err) => {
+        console.error("Fetch /me failed:", err);
+        setLoading(false);
+      });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm({ description, fun_fact })) return;
+
     const res = await fetch(`${import.meta.env.VITE_API_URL}/profile`, {
       method: "POST",
-      credentials: "include", // sends the session cookie
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ role, description, fun_fact, email }),
     });
+
     if (res.ok) {
       window.location.href = "/feed";
     } else {
@@ -43,10 +55,11 @@ export function CreateProfile() {
     }
   };
 
-  // LinkedIn login button is only shown if not logged in
   const handleLinkedInLogin = () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/auth/linkedin/login`;
   };
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <section>
@@ -60,7 +73,7 @@ export function CreateProfile() {
       ) : (
         name && (
           <div className="initials">
-            {getInitials(user.first_name, user.last_name)}
+            {getInitials(name.split(" ")[0], name.split(" ")[1])}
           </div>
         )
       )}
@@ -88,26 +101,33 @@ export function CreateProfile() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="company">{isStudent ? "Program" : "Company"}</label>
+        <label htmlFor="company">{isStudent ? "Program" : "Company"} <sup>*</sup></label>
         <input
           id="company"
           name={isStudent ? "program" : "company"}
           value={description}
           type="text"
-          placeholder={
-            isStudent ? "e.g. Digital Design at Yrgo" : "Your company"
-          }
-          onChange={(e) => setDescription(e.target.value)}
+          placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
+          onChange={(e) => {
+            setDescription(e.target.value);
+            clearError("description");
+          }}
         />
+        {errors.description && <p className="error">{errors.description}</p>}
 
-        <label htmlFor="funfact">Fun fact</label>
+        <label htmlFor="funfact">Fun fact <sup>*</sup></label>
         <input
           id="fun_fact"
           value={fun_fact}
           type="text"
           placeholder="e.g. Ask me about my favorite superhero"
-          onChange={(e) => setFunfact(e.target.value)}
+          onChange={(e) => {
+            setFunfact(e.target.value);
+            clearError("fun_fact");
+          }}
         />
+        {errors.fun_fact && <p className="error">{errors.fun_fact}</p>}
+
         <button type="submit">Start the stalking</button>
       </form>
     </section>
