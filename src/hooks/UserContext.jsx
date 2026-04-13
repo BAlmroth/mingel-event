@@ -37,10 +37,10 @@ export function UserProvider({ children }) {
 
       if (!error && data) {
         // safe info while logged in
-        setUser(data); 
-        
+        setUser(data);
+
         // fetch the users liked profiles
-        const { data: likesData } = await supabase 
+        const { data: likesData } = await supabase
           .from("likes")
           .select("liked_id")
           .eq("liker_id", data.id);
@@ -82,13 +82,14 @@ export function UserProvider({ children }) {
   };
 
   const logOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if(!error) {
-      setUser(null);
-      setAllUsers([]);
-      setLikedIds([]);
-    }
-  }
+    await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+    setUser(null);
+    setAllUsers([]);
+    setLikedIds([]);
+  };
 
   return (
     <UserContext.Provider

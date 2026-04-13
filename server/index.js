@@ -103,6 +103,15 @@ app.post("/profile", async (req, res) => {
   res.json(data);
 });
 
+//destroy linkedin session on logout
+app.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) return res.status(500).json({ error: "Logout failed" });
+    res.clearCookie("connect.sid");
+    res.json({ success: true });
+  });
+});
+
 app.use("/auth/linkedin", linkedinAuth);
 
 app.use(express.static(path.join(__dirname, "../dist")));

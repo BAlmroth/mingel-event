@@ -12,6 +12,7 @@ router.get("/login", (req, res) => {
     redirect_uri: process.env.LINKEDIN_REDIRECT_URI,
     scope: "openid profile email",
     state: "123456",
+    prompt: "login",
   });
 
   const url = `https://www.linkedin.com/oauth/v2/authorization?${params}`;
