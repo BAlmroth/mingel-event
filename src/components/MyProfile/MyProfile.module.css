@@ -70,11 +70,10 @@
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background-color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 2rem;
-  color: var(--text-h);
+  color: #212121;
 }

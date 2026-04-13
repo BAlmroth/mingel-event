@@ -146,10 +146,18 @@ input {
   width: 70px;
   height: 70px;
   border-radius: 1rem;
-  background-color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 1.2rem;
+  color: #212121;
+}
+
+.student {
+  background-color: #FCEE58;
+}
+
+.industry {
+  background-color: #FF823E;
 }

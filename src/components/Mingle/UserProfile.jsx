@@ -32,21 +32,23 @@ export function UserProfile() {
         {user.first_name} {user.last_name}
       </h2>
       <div className={Styles.avatar}>
-        {user.picture ? (
-          <img
-            src={user.picture}
-            alt="profile"
-            style={{
-              width: "150px",
-              borderRadius: "50%",
-              marginBottom: "1.5rem",
-            }}
-          />
-        ) : (
-          <div className="initials">
-            {getInitials(user.first_name, user.last_name)}
-          </div>
-        )}
+        <div className={Styles.avatarWrapper}>
+          {user.picture ? (
+            <img
+              src={user.picture}
+              alt="profile"
+              style={{
+                width: "150px",
+                borderRadius: "50%",
+                marginBottom: "1.5rem",
+              }}
+            />
+          ) : (
+            <div className={`${Styles.avatarInitials} ${user.role}`}>
+              {getInitials(user.first_name, user.last_name)}
+            </div>
+          )}
+        </div>
         <h2>
           {user.first_name} {user.last_name}
         </h2>

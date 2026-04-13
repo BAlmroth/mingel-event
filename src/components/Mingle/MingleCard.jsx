@@ -23,7 +23,7 @@ export function MingleCard({ user }) {
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           ) : (
-            <div className="initials">
+            <div className={`initials ${user.role}`}>
   {getInitials(user.first_name, user.last_name)}
 </div>
           )}

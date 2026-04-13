@@ -18,7 +18,7 @@ export function LikedCard({ user }) {
           {user.picture ? (
             <img src={user.picture} alt="profile" className={Styles.Image} />
           ) : (
-            <div className="initials">
+            <div className={`initials ${user.role}`}>
               {getInitials(user.first_name, user.last_name)}
             </div>
           )}

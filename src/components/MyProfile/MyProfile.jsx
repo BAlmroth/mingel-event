@@ -54,7 +54,7 @@ export function MyProfile() {
               className={styles.avatarImage}
             />
           ) : (
-            <div className={styles.avatarInitials}>
+            <div className={`${styles.avatarInitials} ${user.role}`}>
               {getInitials(user.first_name, user.last_name)}
             </div>
           )}

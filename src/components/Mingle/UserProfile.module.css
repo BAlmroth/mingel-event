@@ -20,6 +20,24 @@
     border-radius: 1rem;
 }
 
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.avatarInitials {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #212121;
+}
+
 .funFact {
     padding: 2rem;
 }
@@ -54,5 +72,4 @@
     font-size: 20px;
     font-weight: var(--thin-weight);
 }
-
 
