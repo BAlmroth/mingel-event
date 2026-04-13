@@ -4,7 +4,7 @@ import { LikedCard } from "../Mingle/LikedCard";
 import styles from "./MyProfile.module.css";
 import Star from "../../assets/Star.svg";
 import Edit from "../../assets/Edit.svg";
-import search from "../../assets/search.svg";
+import logout from "../../assets/logout.svg";
 import { getInitials } from "../../utils/helpers";
 
 export function MyProfile() {
@@ -41,7 +41,7 @@ export function MyProfile() {
             <img src={Edit} alt="Edit profile" />
           </button>
           <button className={styles.editBtn} onClick={handleLogout}>
-            <img src={search} alt="Logout" />
+            <img src={logout} alt="Logout" />
           </button>
         </div>
       </div>
