@@ -1,12 +1,12 @@
 :root {
-  --text-h: #FFFFFF;
-  --text-small: #BFBFBF;
-  
+  --text-h: #ffffff;
+  --text-small: #bfbfbf;
+
   --bg: #212121;
-  --border: #FFFFFF;
-  --input-bg: #4F4F4F;
-  --accent: #E51236;
-  --sans: 'Inter', system-ui, sans-serif;
+  --border: #ffffff;
+  --input-bg: #4f4f4f;
+  --accent: #e51236;
+  --sans: "Inter", system-ui, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
@@ -64,7 +64,7 @@ h2 {
 }
 
 h3 {
-  color: var(--text);
+  color: var(--text-h);
 }
 
 h4 {
@@ -91,7 +91,7 @@ button {
   margin-top: 1rem;
   border-radius: 1rem;
   background-color: var(--accent);
-  color: #FFFF;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.0703px;
@@ -99,10 +99,20 @@ button {
   font-family: var(--sans);
 }
 
+.backLink {
+  color: var(--text-small);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: var(--thin-weight);
+}
+
 input {
   padding: 1rem;
   border-radius: 1rem;
-  border: 2px solid var(--border); 
+  border: 2px solid var(--border);
   background-color: var(--input-bg);
   color: var(--text-h);
 }
@@ -120,11 +130,11 @@ input {
 }
 
 .student {
-  background-color: #FCEE58;
+  background-color: #fcee58;
 }
 
 .industry {
-  background-color: #FF823E;
+  background-color: #ff823e;
 }
 
 .error {

@@ -45,11 +45,7 @@ export function MingleFeed() {
 
         {/* search */}
         <div className={Styles.searchWrapper}>
-          <img
-            src={searchImage}
-            alt="search"
-            className={Styles.searchIcon}
-          />
+          <img src={searchImage} alt="search" className={Styles.searchIcon} />
 
           <input
             type="text"
@@ -84,7 +80,9 @@ export function MingleFeed() {
             {filtered.map((person) => (
               <MingleCard key={person.id} user={person} />
             ))}
-            <small>{filtered.length} people in the room</small>
+            <small className={Styles.count}>
+              {filtered.length} people in the room
+            </small>
           </>
         )}
       </section>
