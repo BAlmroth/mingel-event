@@ -161,3 +161,9 @@ input {
 .industry {
   background-color: #FF823E;
 }
+
+.error {
+  color: var(--accent);
+  font-size: 1rem;
+  text-align: left;
+}

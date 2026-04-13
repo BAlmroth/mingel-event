@@ -3,6 +3,7 @@ import { useUser } from "../../hooks/UserContext";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../lib/supabaseClient";
 import styles from "./EditMyProfile.module.css";
+import { useFormValidation } from "../../hooks/FormValidation";
 
 export function EditMyProfile() {
   const { user, loading, updateUser } = useUser();
@@ -13,27 +14,12 @@ export function EditMyProfile() {
   const [funFact, setFunFact] = useState(user?.fun_fact || "");
   const [saving, setSaving] = useState(false);
   
-  // Error states
-  const [errors, setErrors] = useState({});
-
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!description.trim()) {
-      newErrors.description = "Please fill in this field";
-    }
-    if (!funFact.trim()) {
-      newErrors.funFact = "Please fill in this field";
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const { errors, validateForm, clearError } = useFormValidation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    if (!validateForm({ description, funFact })) return;
     
     setSaving(true);
 
@@ -77,38 +63,34 @@ export function EditMyProfile() {
             className={styles.input}
           />
           
-          <label className={styles.label}>Program</label>
+          <label className={styles.label}>Program <sup>*</sup></label>
           <input
             type="text"
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
-              if (errors.description) {
-                setErrors({ ...errors, description: "" });
-              }
+              clearError("description");
             }}
             placeholder="e.g. Digital Design at Yrgo"
             className={styles.input}
           />
-          {errors.description && (
-            <p className={styles.error}>{errors.description}</p>
-          )}
+            {errors.description && (
+              <p className="error">{errors.description}</p>
+            )}
 
-          <label className={styles.label}>Fun Fact</label>
+          <label className={styles.label}>Fun Fact <sup>*</sup></label>
           <input
             type="text"
             value={funFact}
             onChange={(e) => {
               setFunFact(e.target.value);
-              if (errors.funFact) {
-                setErrors({ ...errors, funFact: "" });
-              }
+              clearError("funFact");
             }}
             placeholder="A icebreaker to talk about"
             className={styles.input}
           />
           {errors.funFact && (
-            <p className={styles.error}>{errors.funFact}</p>
+            <p className="error">{errors.funFact}</p>
           )}
 
           <div className={styles.buttons}>
