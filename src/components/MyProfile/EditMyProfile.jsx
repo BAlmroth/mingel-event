@@ -8,6 +8,8 @@ import { useFormValidation } from "../../hooks/FormValidation";
 export function EditMyProfile() {
   const { user, loading, updateUser } = useUser();
   const navigate = useNavigate();
+  const role = localStorage.getItem("role");
+  const isStudent = role === "student";
 
   const [email, setEmail] = useState(user?.email || "");
   const [description, setDescription] = useState(user?.description || "");
@@ -63,15 +65,16 @@ export function EditMyProfile() {
             className={styles.input}
           />
           
-          <label className={styles.label}>Program <sup>*</sup></label>
+          <label htmlFor="company">{isStudent ? "Program" : "Company"} <sup>*</sup></label>
           <input
             type="text"
+            name={isStudent ? "program" : "company"}
             value={description}
             onChange={(e) => {
               setDescription(e.target.value);
               clearError("description");
             }}
-            placeholder="e.g. Digital Design at Yrgo"
+            placeholder={isStudent ? "e.g. Digital Design at Yrgo" : "Your company"}
             className={styles.input}
           />
             {errors.description && (
