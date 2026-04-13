@@ -41,47 +41,64 @@ app.use(
 
 // store info through session, to avoid info in url
 app.get("/me", async (req, res) => {
-  const userId = req.session.userId;
+  const { userId, linkedinData } = req.session;
 
-  if (!userId) return res.status(401).json({ error: "Not logged in" });
+  if (userId) {
+    const { data, error } = await supabase
+      .from("users").select("*").eq("id", userId).single();
+    
+    if (error || !data) {
+      // user not found, clear userId from session
+      req.session.userId = null;
+      if (linkedinData) return res.json(linkedinData);
+      return res.status(401).json({ error: "Not logged in" });
+    }
+    
+    return res.json(data);
+  }
 
-  const { data, error } = await supabase
-    .from("users")
-    .select("*")
-    .eq("id", userId)
-    .single();
+  if (linkedinData) return res.json(linkedinData);
 
-  if (error) return res.status(500).json({ error: "User not found" });
-
-  res.json(data);
+  return res.status(401).json({ error: "Not logged in" });
 });
 
 app.post("/profile", async (req, res) => {
-  const userId = req.session.userId;
-  if (!userId) return res.status(401).json({ error: "Not logged in" });
+  const { userId, linkedinData } = req.session;
+  if (!linkedinData && !userId) return res.status(401).json({ error: "Not logged in" });
 
   const { role, description, fun_fact, email } = req.body;
 
-  const { data: user, error: userError } = await supabase
-    .from("users")
-    .select("first_name, last_name")
-    .eq("id", userId)
-    .single();
-
-    if (userError) {return res.status(500).json({ error: "User fetch failed" });}
+  if (userId) {
+    // returning user — just update
+    const { data: user, error: userError } = await supabase
+      .from("users").select("first_name, last_name").eq("id", userId).single();
+    if (userError) return res.status(500).json({ error: "User fetch failed" });
 
     const username = `${user.first_name}-${user.last_name}-${userId.slice(0, 4)}`
-    .toLowerCase()
-    .replace(/\s+/g, "-");
+      .toLowerCase().replace(/\s+/g, "-");
+
+    const { data, error } = await supabase
+      .from("users").update({ role, description, fun_fact, username, email })
+      .eq("id", userId).select().single();
+
+    if (error) return res.status(500).json({ error: "Failed to update profile" });
+    return res.json(data);
+  }
+
+  // new user — insert for the first time
+  const username = `${linkedinData.first_name}-${linkedinData.last_name}`
+    .toLowerCase().replace(/\s+/g, "-");
 
   const { data, error } = await supabase
     .from("users")
-    .update({ role, description, fun_fact, username, email })
-    .eq("id", userId)
-    .select()
-    .single();
+    .upsert([{ ...linkedinData, role, description, fun_fact, email, username }], 
+      { onConflict: "linkedin_id" })
+    .select().single();
 
-  if (error) return res.status(500).json({ error: "Failed to update profile" });
+  if (error) return res.status(500).json({ error: "Failed to save profile" });
+
+  req.session.userId = data.id;
+  req.session.linkedinData = null;
 
   res.json(data);
 });
