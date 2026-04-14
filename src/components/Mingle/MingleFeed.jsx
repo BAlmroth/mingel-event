@@ -4,7 +4,7 @@ import { MingleCard } from "./MingleCard";
 import { useUser } from "../../hooks/UserContext";
 import searchImage from "../../assets/search.svg";
 
-const filters = ["All", "Students", "Industry"];
+const filters = ["Students", "All", "Industry"];
 
 export function MingleFeed() {
   const { allUsers, loading } = useUser();

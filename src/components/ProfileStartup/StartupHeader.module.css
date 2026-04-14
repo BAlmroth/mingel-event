@@ -3,18 +3,20 @@
 }
 
 .roleInfo h1 {
-  margin-right: 6rem;
+  margin-right: 3rem;
+  margin-top: 0;
   line-height: 1;
 }
 .roleInfo h4 {
   color: var(--text-small);
   font-weight: var(--thin-weight);
+margin: 1rem 0;
 }
 
 .backButton {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .headerp {
-  margin: 3rem 0 0.3rem;
+  margin: 2rem 0 0.3rem;
 }
