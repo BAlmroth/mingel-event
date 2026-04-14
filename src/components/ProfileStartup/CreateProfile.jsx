@@ -104,13 +104,14 @@ export function CreateProfile() {
         {name && (
           <>
             <div className={Styles.greeting}>
-              <label>Welcome,</label>
+              <p className={Styles.welcomeText}>Welcome,</p>
               <p>{name}</p>
             </div>
 
             <label htmlFor="email">Email</label>
             <input
               id="email"
+              autoComplete="email"
               value={email}
               type="email"
               placeholder="your emailadress"
@@ -122,6 +123,7 @@ export function CreateProfile() {
             </label>
             <input
               id="company"
+              autoComplete="company"
               name={isStudent ? "program" : "company"}
               value={description}
               type="text"

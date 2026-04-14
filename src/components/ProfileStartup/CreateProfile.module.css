@@ -14,6 +14,10 @@
   font-size: 1.5rem;
 }
 
+.greeting .welcomeText {
+  font-size: 2rem;
+}
+
 .inputInfo input::placeholder {
   padding-left: 0.5rem;
 }
@@ -22,6 +26,11 @@
   text-align: left;
   margin: 1rem 0 0.4rem;
   font-weight: 600;
+  color: var(--text-h);
+}
+.welcomeText {
+  font-weight: var(--thin-weight);
+  font-size: 2rem;
   color: var(--text-h);
 }
 

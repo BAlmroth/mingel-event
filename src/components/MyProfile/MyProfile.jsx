@@ -15,7 +15,6 @@ export function MyProfile() {
     loading,
     allUsers,
     likedIds = [],
-    unlikeUser,
     logOut,
   } = useUser();
   const navigate = useNavigate();
@@ -60,7 +59,7 @@ export function MyProfile() {
           </div>
         )}
         </div>
-        <p className="subTitle">Wihoo! now people can stalk you, and you them...</p>
+        <p className="subTitle">Wihoo! Now people can stalk you, and you them...</p>
       </div>
       <div className={styles.avatar}>
         <div className={styles.avatarWrapper}>
