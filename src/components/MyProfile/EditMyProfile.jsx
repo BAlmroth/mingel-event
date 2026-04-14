@@ -102,7 +102,7 @@ export function EditMyProfile() {
             <button 
               type="button" 
               onClick={() => navigate("/profile")} 
-              className={styles.cancelBtn}
+              className="cancelBtn"
             >
               Cancel
             </button>

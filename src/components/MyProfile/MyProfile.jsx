@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useUser } from "../../hooks/UserContext";
 import { useNavigate } from "react-router-dom";
 import { LikedCard } from "../Mingle/LikedCard";
@@ -9,6 +10,7 @@ import { getInitials } from "../../utils/helpers";
 import { MingleCard } from "../Mingle/MingleCard";
 
 export function MyProfile() {
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const {
     user,
     loading,
@@ -43,9 +45,21 @@ export function MyProfile() {
           >
             <img src={Edit} alt="Edit profile" />
           </button>
-          <button className={styles.editBtn} onClick={handleLogout}>
-            <img src={logout} alt="Logout" />
-          </button>
+          <button 
+        className={styles.editBtn} 
+        onClick={() => setShowLogoutConfirm(true)}
+      >
+        <img src={logout} alt="Logout" />
+      </button>
+        {showLogoutConfirm && (
+          <div className={styles.modal}>
+            <div>
+              <p>Are you sure you want to log out?</p>
+              <button onClick={handleLogout}>Yes, log out</button>
+              <button className="cancelBtn" onClick={() => setShowLogoutConfirm(false)}>Cancel</button>
+            </div>
+          </div>
+        )}
         </div>
         <p className="subTitle">Wihoo! now people can stalk you, and you them...</p>
       </div>

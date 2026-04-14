@@ -150,3 +150,15 @@ input {
   max-width: 70%;
   text-align: start;
 }
+
+.cancelBtn {
+  flex: 1;
+  background-color: transparent;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
