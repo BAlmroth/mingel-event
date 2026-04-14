@@ -1,4 +1,4 @@
-# Mingle-Event
+# Talk the Stalk
 
 An interactive networking platform where students and companies can create profiles, search for each other, and mark favorites for later contact.
 
