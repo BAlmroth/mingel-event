@@ -137,7 +137,7 @@ export function CreateProfile() {
               <p className="error">{errors.description}</p>
             )}
 
-            <label htmlFor="funfact">
+            <label htmlFor="fun_fact">
               Fun fact <sup>*</sup>
             </label>
             <input

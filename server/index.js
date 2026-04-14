@@ -42,6 +42,10 @@ app.use(
 app.get("/me", async (req, res) => {
   const { userId, linkedinData } = req.session;
 
+  if (!userId && !linkedinData) {
+    return res.json(null);
+  }
+
   if (userId) {
     const { data, error } = await supabase
       .from("users").select("*").eq("id", userId).single();
