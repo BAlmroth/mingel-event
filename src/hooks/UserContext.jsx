@@ -29,6 +29,11 @@ export function UserProvider({ children }) {
 
       const linkedinUser = await res.json();
 
+      if (!res.ok || !linkedinUser) {
+        setLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from("users")
         .select("*")
