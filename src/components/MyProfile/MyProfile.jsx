@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useUser } from "../../hooks/UserContext";
 import { useNavigate } from "react-router-dom";
-import { LikedCard } from "../Mingle/LikedCard";
 import styles from "./MyProfile.module.css";
 import Star from "../../assets/Star.svg";
 import Edit from "../../assets/Edit.svg";
