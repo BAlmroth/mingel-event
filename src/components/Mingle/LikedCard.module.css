@@ -1,0 +1,36 @@
+.profile {
+  width: 70px;
+  height: 70px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.Image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.starBtn {
+  width: 24px;
+}
+
+.profileCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  text-align: left;
+}
+
+.leftField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

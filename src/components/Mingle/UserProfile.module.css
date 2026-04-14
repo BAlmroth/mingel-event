@@ -1,43 +1,90 @@
 .profilesection {
-    padding-bottom: 1.5rem;
-    
+  padding-bottom: 1.5rem;
+}
+
+.userInfo {
+  text-align: left;
 }
 
 .profileheader {
-    text-align: left;
-    font-weight: var(--regular-weight);
-    font-style: bold;
-    margin: 2rem 0;
+  text-align: left;
+  font-weight: var(--regular-weight);
+  margin: 2rem 0;
 }
 
 .avatar {
-    padding: 1.5rem;
-    border: 1px solid var(--border);
-    margin: 3rem 0;
-    border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+  border-radius: 1rem;
+}
+.avatar h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text-h);
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.profileImage {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.avatarInitials {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #212121;
 }
 
 .funFact {
-    padding: 2rem;
+  padding: 2rem;
+  margin: 2rem 0 1rem;
+  background-color: var(--input-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+}
+.funFact h4 {
+  margin: 0 0 0.5rem;
 }
 
 .stalkLater {
-    display: flex;
-    justify-content: center;
-    border: 1px solid var(--border); 
-    border-radius: 1rem;
-    padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 .stalkLater img {
-    margin-right: 1rem;
+  margin-right: 1rem;
+}
+
+.stalkStarActive {
+  opacity: 1;
+}
+
+.stalkStarInactive {
+  opacity: 0.3;
 }
 
 .stalkBtn {
-    background-color: transparent;
-    color: black;
-    gap: 1rem;
-    margin: 0;
+  background-color: transparent;
+  gap: 1rem;
+  margin: 0;
 }
 
-
+.backButton {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}

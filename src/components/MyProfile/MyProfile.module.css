@@ -1,28 +1,123 @@
 .profilesection {
-    padding-bottom: 1.5rem;
-    
+  padding-bottom: 1.5rem;
 }
 
 .profileheader {
-    text-align: left;
-    font-weight: var(--regular-weight);
-    font-style: bold;
-    margin: 2rem 0;
+  text-align: left;
+  font-weight: var(--regular-weight);
+  margin: 2rem 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  gap: 1rem;
+  line-height: 0.9;
+}
+
+.titleRow h1 {
+  margin: 0;
+  margin-right: auto;
+  text-align: left;
 }
 
 .avatar {
-    padding: 1.5rem;
-    border: 1px solid var(--border);
-    margin: 3rem 0;
-    border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+  border-radius: 1rem;
+}
+
+.avatar h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-h);
 }
 
 .funFact {
-    padding: 2rem;
+  padding: 2rem;
+  margin: 2rem 0 1rem;
+  background-color: var(--input-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+}
+
+.funFact h4{
+    margin: 0 0 0.5rem;
 }
 
 .stalkLater {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;    
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.editBtn {
+  background-color: var(--bg);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.editBtn img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.stalkedFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatarImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.avatarInitials {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #212121;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modal > div {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }

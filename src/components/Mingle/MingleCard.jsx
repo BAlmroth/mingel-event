@@ -1,42 +1,49 @@
 import Styles from "./MingleFeed.module.css";
 import { useNavigate } from "react-router-dom";
-
-const getInitials = (firstName, lastName) => { //lägg i egen component då den används flera gånger
-  return `${firstName?.[0] ?? ""}${lastName?.[0] ?? ""}`.toUpperCase();
-};
+import { getInitials } from "../../utils/helpers";
 
 export function MingleCard({ user }) {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/profiles/${user.id}`)} className={Styles.profileCard}>
+      <div
+      onClick={() => navigate(`/profiles/${user.username}`)}
+      className={Styles.profileCard}
+    >
       <div className={Styles.leftField}>
-        <div
-          style={{
-            width: "70px",
-            height: "70px",
-            borderRadius: "1rem",
-            overflow: "hidden",
-          }}
-        >
+      <div className={Styles.imageWrapper}>
           {user.picture ? (
             <img
               src={user.picture}
               alt="profile"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              className={Styles.profileImg}
             />
           ) : (
-            getInitials(user.first_name, user.last_name)
+            <div className={`initials ${user.role}`}>
+              {getInitials(user.first_name, user.last_name)}
+            </div>
           )}
-        </div>
-        <div className={Styles.profileText}>
+       </div>
+      <div className={Styles.profileText}>
           <h5>
             {user.first_name} {user.last_name}
           </h5>
           <p>{user.description}</p>
         </div>
       </div>
-      <small className={Styles.role}>{user.role}</small>
+      <small className={Styles.role}>
+        {user.role === "student" ? (
+          <>
+            <span className={Styles.roleFull}>student</span>
+            <span className={Styles.roleShort}>S</span>
+          </>
+        ) : (
+          <>
+            <span className={Styles.roleFull}>industry</span>
+            <span className={Styles.roleShort}>I</span>
+          </>
+        )}
+      </small>
     </div>
   );
 }

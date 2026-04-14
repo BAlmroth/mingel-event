@@ -1,28 +1,20 @@
-.roleInfo{
-    text-align: left;
+.roleInfo {
+  text-align: left;
 }
 
-h1 {
-    margin-right: 6rem;
-    line-height: 1;
+.roleInfo h1 {
+  margin-right: 6rem;
+  line-height: 1;
 }
 .roleInfo h4 {
-    color: var(--text-small);
-    font-weight: var(--thin-weight);
+  color: var(--text-small);
+  font-weight: var(--thin-weight);
 }
 
 .backButton {
-    color: var(--text-small);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    font-weight: var(--regular-weight);
-    margin-bottom: 2rem;
-    font-size: 20px;
-    font-weight: var(--thin-weight);
+  margin-bottom: 2rem;
 }
 
 .headerp {
-    margin: 3rem 0 0.3rem;
+  margin: 3rem 0 0.3rem;
 }

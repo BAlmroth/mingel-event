@@ -1,6 +1,6 @@
 import { RoleCard } from "./RoleCard";
-import StudentImg from "../../assets/Student.svg";
-import IndustryImg from "../../assets/Industry.svg";
+import StudentImg from "../../assets/StudentRole.svg";
+import IndustryImg from "../../assets/IndustryRole.svg";
 import { useNavigate } from "react-router-dom";
 import { PageHeader } from "./StartupHeader";
 
@@ -11,7 +11,6 @@ export function ChooseRole() {
     <>
       <section>
         <PageHeader />
-
         <RoleCard
           src={StudentImg}
           alt="student logo"

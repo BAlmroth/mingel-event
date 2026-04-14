@@ -16,6 +16,6 @@
 
 .cardinfo h4 {    
     margin: 2px;
-    color: var(--text);
+    color: var(--text-h);
     font-size: 18px;
 }

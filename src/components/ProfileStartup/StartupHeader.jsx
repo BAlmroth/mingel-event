@@ -1,6 +1,7 @@
 import styles from "./StartupHeader.module.css";
 import { useLocation, Link } from "react-router-dom";
 import BackArrow from "../../assets/BackArrow.svg";
+
 export function PageHeader() {
   const location = useLocation();
   const isFirst = location.pathname === "/";
@@ -13,7 +14,7 @@ export function PageHeader() {
       {isFirst ? (
         <p className={styles.headerp}>I AM A...</p>
       ) : (
-        <Link to="/" className={styles.backButton}>
+        <Link to="/" className={`backLink ${styles.backButton}`}>
           <img src={BackArrow} alt="back arrow" />
           Back
         </Link>

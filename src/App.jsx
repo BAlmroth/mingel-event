@@ -5,6 +5,8 @@ import { MingleFeed } from "./components/Mingle/MingleFeed";
 import { Routes, Route } from "react-router-dom";
 import { MyProfile } from "./components/MyProfile/MyProfile";
 import { UserProfile } from "./components/Mingle/UserProfile";
+import { EditMyProfile } from "./components/MyProfile/EditMyProfile";
+import { Error } from "./components/Error/Error";
 
 function App() {
   return (
@@ -12,10 +14,13 @@ function App() {
       <Routes>
         <Route path="/" element={<ChooseRole />} />
         <Route path="/create-profile" element={<CreateProfile />} />
-        <Route path="/create-profile-linkedin" element={<CreateProfile />} /> {/*after linkedin login*/}
+        <Route path="/create-profile-linkedin" element={<CreateProfile />} />
         <Route path="/profile" element={<MyProfile />} />
+        <Route path="/profile/edit" element={<EditMyProfile />} />
         <Route path="/feed" element={<MingleFeed />} />
-        <Route path="/profiles/:id" element={<UserProfile />} />
+        <Route path="/profiles/:username" element={<UserProfile />} />
+        <Route path="/error" element={<Error />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <BottomNav />
     </>
