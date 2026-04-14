@@ -10,13 +10,7 @@ import { MingleCard } from "../Mingle/MingleCard";
 
 export function MyProfile() {
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const {
-    user,
-    loading,
-    allUsers,
-    likedIds = [],
-    logOut,
-  } = useUser();
+  const { user, loading, allUsers, likedIds = [], logOut } = useUser();
   const navigate = useNavigate();
 
   // handle user logout
@@ -43,23 +37,30 @@ export function MyProfile() {
           >
             <img src={Edit} alt="Edit profile" />
           </button>
-          <button 
-        className={styles.editBtn} 
-        onClick={() => setShowLogoutConfirm(true)}
-      >
-        <img src={logout} alt="Logout" />
-      </button>
-        {showLogoutConfirm && (
-          <div className={styles.modal}>
-            <div>
-              <p>Are you sure you want to log out?</p>
-              <button onClick={handleLogout}>Yes, log out</button>
-              <button className="cancelBtn" onClick={() => setShowLogoutConfirm(false)}>Cancel</button>
+          <button
+            className={styles.editBtn}
+            onClick={() => setShowLogoutConfirm(true)}
+          >
+            <img src={logout} alt="Logout" />
+          </button>
+          {showLogoutConfirm && (
+            <div className={styles.modal}>
+              <div>
+                <p>Are you sure you want to log out?</p>
+                <button onClick={handleLogout}>Yes, log out</button>
+                <button
+                  className="cancelBtn"
+                  onClick={() => setShowLogoutConfirm(false)}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
-        <p className="subTitle">Wihoo! Now people can stalk you, and you them...</p>
+        <p className="subTitle">
+          Wihoo! Now people can stalk you, and you them...
+        </p>
       </div>
       <div className={styles.avatar}>
         <div className={styles.avatarWrapper}>
@@ -75,23 +76,23 @@ export function MyProfile() {
             </div>
           )}
         </div>
-          <h2>
-            {user.first_name} {user.last_name}
-          </h2>
-          <p>
-            {user.role} • {user.description}
-          </p>
-          <h4>Email:</h4>
-          <h5>{user.email}</h5>
-            <div className={styles.funFact}>
-              <h4>MY FUN FACT:</h4>
-              <p>{user.fun_fact}</p>
-            </div>
+        <h2>
+          {user.first_name} {user.last_name}
+        </h2>
+        <p>
+          {user.role} • {user.description}
+        </p>
+        <h4>Email:</h4>
+        <h5>{user.email}</h5>
+        <div className={styles.funFact}>
+          <h4>MY FUN FACT:</h4>
+          <p>{user.fun_fact}</p>
         </div>
-        <div className={styles.stalkLater}>
-          <img src={Star} alt="stalk" className={styles.stalkBtn} />
-          <h3>Stalking for later</h3>
-        </div>
+      </div>
+      <div className={styles.stalkLater}>
+        <img src={Star} alt="stalk" className={styles.stalkBtn} />
+        <h3>Stalking for later</h3>
+      </div>
       <div className={styles.stalkedFeed}>
         {likedProfiles.map((p) => (
           <MingleCard key={p.id} user={p} />

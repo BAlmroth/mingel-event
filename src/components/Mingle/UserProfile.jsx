@@ -4,6 +4,7 @@ import Styles from "./UserProfile.module.css";
 import Star from "../../assets/Star.svg";
 import BackArrow from "../../assets/BackArrow.svg";
 import { getInitials } from "../../utils/helpers";
+import { useState } from "react";
 
 export function UserProfile() {
   const {
@@ -20,8 +21,21 @@ export function UserProfile() {
   const user = allUsers?.find((u) => u.username === username);
   const isLiked = likedIds.includes(user?.id);
 
+  const [copied, setCopied] = useState(false);
+
   if (loading) return <p>Loading...</p>;
   if (!user && !loading) return <p>Person not found</p>;
+
+  //copy
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(user.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1200);
+    } catch (err) {
+      console.log("Copy failed:", err);
+    }
+  };
 
   return (
     <section>
@@ -53,8 +67,17 @@ export function UserProfile() {
         <p>
           {user.role} • {user.description}
         </p>
-        <h4>Email:</h4>
-        <h5>{user.email}</h5>
+
+
+                <h4>Email:</h4>
+        
+                <h5 onClick={copyEmail} className={Styles.email}>
+                  {user.email}
+                </h5>
+        
+                <p onClick={copyEmail} className={Styles.copyHint}>
+                  {copied ? "Copied to clipboard!" : "Copy"}
+                </p>
         <div className={Styles.funFact}>
           <h4>MY FUN FACT:</h4>
           <p>{user.fun_fact}</p>
