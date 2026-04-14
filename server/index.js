@@ -8,7 +8,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-console.log("ENV CHECK:", process.env.SUPABASE_URL);
 
 import express from "express";
 import cors from "cors";
@@ -26,7 +25,7 @@ app.use(cors({
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "mysecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {

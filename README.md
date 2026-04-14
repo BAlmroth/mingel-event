@@ -98,19 +98,26 @@ VITE_API_URL=http://localhost:4000
 
 ```env
 
-# LinkedIn OAuth
 LINKEDIN_CLIENT_ID=your_client_id
 LINKEDIN_CLIENT_SECRET=your_client_secret
 LINKEDIN_REDIRECT_URI=http://localhost:4000/auth/linkedin/callback
 
-# Frontend URL
 FRONTEND_URL=http://localhost:5173
 
-# Supabase
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_SECRET_supabase_key
 
+SESSION_SECRET=your_session_secret
+
 ```
+
+3. in your server (backend) terminal run:
+```bash
+
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+```
+4. copy the generated hex code and paste as SESSION_SECRET in .env
 
 ### Step 6: Start Backend
 
